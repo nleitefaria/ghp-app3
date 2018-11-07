@@ -10,7 +10,11 @@
     "react-scripts": "2.1.1",
     "axios": "^0.18.0",
     "bootstrap": "^4.1.1",
-    "classnames": "^2.2.6"
+    "reactstrap": "^6.0.1",
+    "classnames": "^2.2.6",
+    "@devexpress/dx-react-core": "^1.2.0",
+    "@devexpress/dx-react-grid": "^1.2.0",
+    "@devexpress/dx-react-grid-bootstrap4": "^1.2.0"
   },
   "scripts": {
     "start": "react-scripts start",
