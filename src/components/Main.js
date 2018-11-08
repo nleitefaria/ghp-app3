@@ -6,10 +6,10 @@ import {
 }
 from "react-router-dom";
 
-import 
+import
 {
 	  Container, Row, Col
-} 
+}
 from 'reactstrap';
 
 import Employees from './Employees';
@@ -19,25 +19,25 @@ import Header from './Header';
 class Main extends Component
 {
 	  render() {
-	    return (					
-				<HashRouter>				
+	    return (
+				<HashRouter>
 	            	<div>
 	            		<div>
 							<Container>
 	            				<Row>
 	            					<Col>
-										<Header></Header>
-										<NavLink to="/">Employees</NavLink> | <NavLink to="/projects">Projects</NavLink>	            						
-	            						<div className="content">
-	            							<Route exact path="/" component={Employees}/>	            							
-	            							<Route path="/projects" component={Projects}/>
-	            						</div>
-									</Col>
+													<Header></Header>
+														<NavLink to="/">Employees</NavLink> | <NavLink to="/projects">Projects</NavLink>
+	            								<div className="content">
+	            									<Route exact path="/" component={Employees}/>
+	            									<Route path="/projects" component={Projects}/>
+	            							</div>
+												</Col>
 	            				</Row>
-	            			</Container>            					
+	            			</Container>
 	            		</div>
 	            	</div>
-	            </HashRouter>								
+	            </HashRouter>
 	    );
 	  }
 }

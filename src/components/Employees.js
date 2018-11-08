@@ -5,59 +5,85 @@ import { Grid, Table, TableHeaderRow} from '@devexpress/dx-react-grid-bootstrap4
 
 import EmployeesAddModal from './EmployeesAddModal';
 import EmployeesEditModal from './EmployeesEditModal';
+import EmployeesDeleteModal from './EmployeesDeleteModal';
+import ProjectsLink from './ProjectsLink';
+
+const ActionCell = ({ id }) => (
+  <Table.Cell>
+    <span>
+				<Row>
+            <Col xs="2"><ProjectsLink id={id}/></Col>
+            <Col xs="2"><EmployeesEditModal id={id}></EmployeesEditModal></Col>
+            <Col xs="2"><EmployeesDeleteModal id={id}></EmployeesDeleteModal></Col>
+        </Row>
+    </span>
+  </Table.Cell>
+);
+
+const Cell = (props) => {
+  const { column, row } = props;
+  if (column.name === 'action') {
+    return <ActionCell  id={row.id} />;
+  }
+  return <Table.Cell {...props} />;
+};
 
 class Employees extends React.Component
 {
-
-    constructor(props) 
+    constructor(props)
     {
         super(props);
 
-        this.state = 
+        this.state =
         {
             columns: [
                 { name: 'name', title: 'Name' },
                 { name: 'startDate', title: 'Start Date' },
-                { name: 'role', title: 'Role' },
+                { name: 'role', title: 'Role', width: 50 },
                 { name: 'platoon', title: 'Platoon' },
-                { name: 'action', title: 'Action' },
+                { name: 'action', title: 'Action', align: 'right', width: 140 },
             ],
             rows: [],
         };
-        
+
     }
 
 
     componentDidMount()
-	{
-		this.loadData();
-	}
+	  {
+		    this.loadData();
+	  }
 
     loadData()
     {
-        alert('Will call API');
-    }
-    
-   render() {
+        const data =  [
+          {"id": 1, "name": "Joe Dassin", "startDate": "2000-01-01","role": "PE", "platoon": "Splinkers"},
+          {"id": 2, "name": "Serge Amie", "startDate": "2000-02-01","role": "SE", "platoon": "Super Prozoides"},
+          {"id": 3, "name": "Albert Curie", "startDate": "2000-02-01","role": "SE", "platoon": "Awesome"},
+          {"id": 4, "name": "Virginie Danon", "startDate": "2000-02-01","role": "SE", "platoon": "Super"},
+        ];
 
-    const { rows, columns } = this.state;
+        this.setState({
+          rows: data,
+        })
+    }
+
+    render()
+    {
+      const { rows, columns } = this.state;
 
       return (
          <div>
             <br></br>
-            <h1>Employees</h1>
-            <br></br>
             <Container>
                 <Row>
                     <Col xs="1"><EmployeesAddModal></EmployeesAddModal></Col>
-                    <Col xs="1"><EmployeesEditModal></EmployeesEditModal></Col>
-                    <Col xs="1">.col</Col>
                 </Row>
-            </Container>           
+            </Container>
             <br></br>
             <Card>
                 <Grid rows={rows} columns={columns} >
-                    <Table />
+                    <Table cellComponent={Cell}/>
                         <TableHeaderRow />
                 </Grid>
             </Card>
