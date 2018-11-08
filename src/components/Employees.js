@@ -10,13 +10,13 @@ import ProjectsLink from './ProjectsLink';
 
 const ActionCell = ({ id }) => (
   <Table.Cell>
-    
+    <span>
 		<Row>
             <Col xs="1"><ProjectsLink id={id}/></Col>
             <Col xs="2"><EmployeesEditModal id={id}></EmployeesEditModal></Col>
             <Col xs="2"><EmployeesDeleteModal id={id}></EmployeesDeleteModal></Col>
         </Row>
-    
+    </span>
   </Table.Cell>
 );
 
@@ -57,10 +57,10 @@ class Employees extends React.Component
     loadData()
     {
         const data =  [
-          {"id": 1, "name": "Joe Dassin", "startDate": "2000-01-01","role": "PE", "platoon": "Splinkers"},
-          {"id": 2, "name": "Serge Amie", "startDate": "2000-02-01","role": "SE", "platoon": "Super Prozoides"},
-          {"id": 3, "name": "Albert Curie", "startDate": "2000-02-01","role": "SE", "platoon": "Awesome"},
-          {"id": 4, "name": "Virginie Danon", "startDate": "2000-02-01","role": "SE", "platoon": "Hyper"},
+          {"id": 1, "name": "Joe Dassin", "startDate": "01/01/2000","role": "PE", "platoon": "Splinkers"},
+          {"id": 2, "name": "Serge Amie", "startDate": "01/02/2000","role": "SE", "platoon": "Super Prozoides"},
+          {"id": 3, "name": "Albert Curie", "startDate": "01/02/2000","role": "SE", "platoon": "Awesome"},
+          {"id": 4, "name": "Virginie Danon", "startDate": "01/02/2001","role": "SE", "platoon": "Hyper"},
         ];
 
         this.setState({
