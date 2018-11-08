@@ -10,13 +10,13 @@ import ProjectsLink from './ProjectsLink';
 
 const ActionCell = ({ id }) => (
   <Table.Cell>
-    <span>
+    
 		<Row>
-            <Col xs="2"><ProjectsLink id={id}/></Col>
+            <Col xs="1"><ProjectsLink id={id}/></Col>
             <Col xs="2"><EmployeesEditModal id={id}></EmployeesEditModal></Col>
             <Col xs="2"><EmployeesDeleteModal id={id}></EmployeesDeleteModal></Col>
         </Row>
-    </span>
+    
   </Table.Cell>
 );
 
