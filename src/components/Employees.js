@@ -11,7 +11,7 @@ import ProjectsLink from './ProjectsLink';
 const ActionCell = ({ id }) => (
   <Table.Cell>
     <span>
-				<Row>
+		<Row>
             <Col xs="2"><ProjectsLink id={id}/></Col>
             <Col xs="2"><EmployeesEditModal id={id}></EmployeesEditModal></Col>
             <Col xs="2"><EmployeesDeleteModal id={id}></EmployeesDeleteModal></Col>
@@ -39,9 +39,9 @@ class Employees extends React.Component
             columns: [
                 { name: 'name', title: 'Name' },
                 { name: 'startDate', title: 'Start Date' },
-                { name: 'role', title: 'Role', width: 50 },
+                { name: 'role', title: 'Role', width: 20 },
                 { name: 'platoon', title: 'Platoon' },
-                { name: 'action', title: 'Action', align: 'right', width: 140 },
+                { name: 'action', title: 'Action'}
             ],
             rows: [],
         };
@@ -60,7 +60,7 @@ class Employees extends React.Component
           {"id": 1, "name": "Joe Dassin", "startDate": "2000-01-01","role": "PE", "platoon": "Splinkers"},
           {"id": 2, "name": "Serge Amie", "startDate": "2000-02-01","role": "SE", "platoon": "Super Prozoides"},
           {"id": 3, "name": "Albert Curie", "startDate": "2000-02-01","role": "SE", "platoon": "Awesome"},
-          {"id": 4, "name": "Virginie Danon", "startDate": "2000-02-01","role": "SE", "platoon": "Super"},
+          {"id": 4, "name": "Virginie Danon", "startDate": "2000-02-01","role": "SE", "platoon": "Hyper"},
         ];
 
         this.setState({
