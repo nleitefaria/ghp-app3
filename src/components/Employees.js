@@ -12,7 +12,7 @@ const ActionCell = ({ id }) => (
   <Table.Cell>
     <span>
 		<Row>
-            <Col xs="1"><ProjectsLink id={id}/></Col>
+            <Col xs="2"><ProjectsLink id={id}/></Col>
             <Col xs="2"><EmployeesEditModal id={id}></EmployeesEditModal></Col>
             <Col xs="2"><EmployeesDeleteModal id={id}></EmployeesDeleteModal></Col>
         </Row>
@@ -48,17 +48,16 @@ class Employees extends React.Component
 
     }
 
-
     componentDidMount()
-	  {
+	{
 		    this.loadData();
-	  }
+	}
 
     loadData()
     {
         const data =  [
-          {"id": 1, "name": "Joe Dassin", "startDate": "01/01/2000","role": "PE", "platoon": "Splinkers"},
-          {"id": 2, "name": "Serge Amie", "startDate": "01/02/2000","role": "SE", "platoon": "Super Prozoides"},
+          {"id": 1, "name": "Serge Dassin", "startDate": "01/01/2000","role": "PE", "platoon": "Splinkers"},
+          {"id": 2, "name": "Joe Amie", "startDate": "01/02/2000","role": "SE", "platoon": "Super Pros"},
           {"id": 3, "name": "Albert Curie", "startDate": "01/02/2000","role": "SE", "platoon": "Awesome"},
           {"id": 4, "name": "Virginie Danon", "startDate": "01/02/2001","role": "SE", "platoon": "Hyper"},
         ];
