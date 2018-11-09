@@ -8,14 +8,26 @@ import EmployeesEditModal from './EmployeesEditModal';
 import EmployeesDeleteModal from './EmployeesDeleteModal';
 import ProjectsLink from './ProjectsLink';
 
+var divStyleOutter = {
+  'width': '300px'
+};
+
+var divStyleInner = {
+  'float': 'left', 'width': '80px'
+};
+
+var divStyleInnerLink = {
+  'float': 'left', 'width': '80px', 'paddingTop': '5px', 'paddingLeft': '10px'
+};
+
 const ActionCell = ({ id }) => (
   <Table.Cell>
     <span>
-		<Row>
-            <Col xs="2"><ProjectsLink id={id}/></Col>
-            <Col xs="2"><EmployeesEditModal id={id}></EmployeesEditModal></Col>
-            <Col xs="2"><EmployeesDeleteModal id={id}></EmployeesDeleteModal></Col>
-        </Row>
+      <div style={divStyleOutter}>
+       <div style={divStyleInner}><EmployeesEditModal id={id}></EmployeesEditModal></div>
+       <div style={divStyleInner}><EmployeesDeleteModal id={id}></EmployeesDeleteModal></div>
+       <div style={divStyleInnerLink}><ProjectsLink id={id}/></div>
+      </div>
     </span>
   </Table.Cell>
 );
@@ -43,21 +55,24 @@ class Employees extends React.Component
                 { name: 'platoon', title: 'Platoon' },
                 { name: 'action', title: 'Action'}
             ],
+						tableColumnExtensions: [
+        				{ columnName: 'action', width: 100 }
+      			],
             rows: [],
         };
 
     }
 
     componentDidMount()
-	{
-		    this.loadData();
-	}
+	  {
+        this.loadData();
+	  }
 
     loadData()
     {
         const data =  [
           {"id": 1, "name": "Serge Dassin", "startDate": "01/01/2000","role": "PE", "platoon": "Splinkers"},
-          {"id": 2, "name": "Joe Amie", "startDate": "01/02/2000","role": "SE", "platoon": "Super Pros"},
+          {"id": 2, "name": "Joe Whashingthon", "startDate": "01/02/2000","role": "SE", "platoon": "Super Pros"},
           {"id": 3, "name": "Albert Curie", "startDate": "01/02/2000","role": "SE", "platoon": "Awesome"},
           {"id": 4, "name": "Virginie Danon", "startDate": "01/02/2001","role": "SE", "platoon": "Hyper"},
         ];
@@ -69,7 +84,7 @@ class Employees extends React.Component
 
     render()
     {
-      const { rows, columns } = this.state;
+      const { rows, columns, tableColumnExtensions } = this.state;
 
       return (
          <div>
@@ -82,7 +97,7 @@ class Employees extends React.Component
             <br></br>
             <Card>
                 <Grid rows={rows} columns={columns} >
-                    <Table cellComponent={Cell}/>
+                    <Table cellComponent={Cell} columnExtensions={tableColumnExtensions}/>
                         <TableHeaderRow />
                 </Grid>
             </Card>

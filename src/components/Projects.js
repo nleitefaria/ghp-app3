@@ -7,26 +7,36 @@ import ProjectsAddModal from './ProjectsAddModal';
 import ProjectsDeleteModal from './ProjectsDeleteModal';
 import EmployeesLink from './EmployeesLink';
 
+var divStyleOutter = {
+  'width': '300px'
+};
+
+var divStyleInner = {
+  'float': 'left', 'width': '80px'
+};
+
+var divStyleInnerLink = {
+  'float': 'left', 'width': '80px', 'paddingTop': '5px', 'paddingLeft': '10px'
+};
+
 const ActionCell = ({ id }) => (
 		  <Table.Cell>
-		    <span>
-				<Row>
-				<Col xs="2"><EmployeesLink id={id}/></Col>
-				<Col xs="2"><ProjectsDeleteModal></ProjectsDeleteModal></Col>
-		        </Row>
-		    </span>
+				<div style={divStyleOutter}>
+				 <div style={divStyleInner}><ProjectsDeleteModal></ProjectsDeleteModal></div>
+         <div style={divStyleInnerLink}><EmployeesLink id={id}/></div>
+		    </div>
 		  </Table.Cell>
 );
 
 const Cell = (props) => {
 	const { column, row } = props;
-		  
-	if (column.name === 'action') 
+
+	if (column.name === 'action')
 	{
 		return <ActionCell  id={row.id} />;
 	}
 	return <Table.Cell {...props} />;
-		
+
 };
 
 class Projects extends React.Component
@@ -38,19 +48,22 @@ class Projects extends React.Component
         this.state =
         {
             columns: [
-                { name: 'name', title: 'Name' },              
+                { name: 'name', title: 'Name'},
                 { name: 'action', title: 'Action'}
             ],
+						tableColumnExtensions: [
+        				{ columnName: 'action', width: 100 }
+      			],
             rows: [],
         };
 
     }
-	
+
     componentDidMount()
-	{
+		{
     	this.loadData();
-	}
-    
+		}
+
     loadData()
     {
         const data =  [
@@ -64,11 +77,11 @@ class Projects extends React.Component
           rows: data,
         })
     }
-		
-   render() {
-	   
-	   const { rows, columns } = this.state;
-	   
+
+   	render()
+		{
+	   	const { rows, columns, tableColumnExtensions } = this.state;
+
       return (
          <div>
          <br></br>
@@ -80,7 +93,7 @@ class Projects extends React.Component
          <br></br>
          <Card>
              <Grid rows={rows} columns={columns} >
-                 <Table cellComponent={Cell}/>
+                 <Table cellComponent={Cell} columnExtensions={tableColumnExtensions}/>
                      <TableHeaderRow />
              </Grid>
          </Card>

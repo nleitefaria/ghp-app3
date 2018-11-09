@@ -1,9 +1,8 @@
 import React from 'react';
 import { FormGroup, Label, Input, Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 
-
-
-class EmployeesAddModal extends React.Component {
+class EmployeesAddModal extends React.Component
+{
   constructor(props) {
     super(props);
     this.state = {
@@ -42,7 +41,6 @@ class EmployeesAddModal extends React.Component {
     //alert(event.target.value);
     //event.preventDefault();
     alert('ICI');
-    //this.toggle;
 
 
   }
@@ -52,19 +50,19 @@ class EmployeesAddModal extends React.Component {
       <div>
         <Button color="primary" onClick={this.toggle}>Add</Button>
         <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
-          <ModalHeader toggle={this.toggle}>Add Employee</ModalHeader>
+          <ModalHeader toggle={this.toggle}><b>Add Employee</b></ModalHeader>
           <ModalBody>
               <form onSubmit={this.handleSubmit}>
                 <FormGroup>
-                  <Label>Name</Label>
+                  <Label><b>Name:</b></Label>
                   <Input type="text" value={this.state.inputvalue} onChange={this.handleChange} />
                 </FormGroup>
                 <FormGroup>
-                  <Label for="exampleDate">Date</Label>
+                  <Label><b>Date</b></Label>
                   <Input type="date" name="date" id="exampleDate" placeholder="date placeholder" />
                 </FormGroup>
                 <FormGroup>
-                  <Label>Role</Label>
+                  <Label><b>Role:</b></Label>
                     <FormGroup check>
                       <Label check>
                         <Input type="radio" name="radio1" />{' '}(none selected)
@@ -92,29 +90,15 @@ class EmployeesAddModal extends React.Component {
                     </FormGroup>
                 </FormGroup>
                 <FormGroup>
-                  <Label>Select</Label>
+                  <Label><b>Platoon:</b></Label>
                     <Input type="select" name="select" id="exampleSelect">
                       <option>Please select one</option>
                       <option>Splinkers</option>
-                      <option>Super Prozoides</option>
+                      <option>Super Pros</option>
                       <option>Awesome</option>
                       <option>Hyper</option>
                     </Input>
                 </FormGroup>
-
-
-
-
-
-                <input type="submit" value="Submit"/>
-
-
-
-
-
-
-
-
               </form>
           </ModalBody>
           <ModalFooter>
