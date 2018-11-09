@@ -22,7 +22,7 @@ class EmployeesDeleteModal extends React.Component {
       <div>
         <Button color="primary" onClick={this.toggle}>Delete</Button>
         <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
-          <ModalHeader toggle={this.toggle}>Modal title</ModalHeader>
+          <ModalHeader toggle={this.toggle}>Delete Employee</ModalHeader>
           <ModalBody>
             Are you sure you want to delete employee NAME <br></br>
             and his allocation to projects?
