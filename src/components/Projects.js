@@ -56,26 +56,80 @@ class Projects extends React.Component
       			],
             rows: [],
         };
-
     }
 
     componentDidMount()
 		{
-    	this.loadData();
+      var id = window.location.href.split('/')[window.location.href.split('/').length - 1];
+    	this.loadData(id);
 		}
 
-    loadData()
+    loadData(id)
     {
-        const data =  [
+        var data =  [
           {"id": 1, "name": "Project 1"},
           {"id": 2, "name": "Project 2"},
           {"id": 3, "name": "Project 3"},
-          {"id": 4, "name": "Project 4"}
+          {"id": 4, "name": "Project 4"},
+          {"id": 5, "name": "Project 5"}
         ];
 
-        this.setState({
-          rows: data,
-        })
+        if(id === 'projects')
+        {
+          this.setState({
+            rows: data,
+          })
+        }
+
+        if(id === '1')
+        {
+          data =  [
+            {"id": 1, "name": "Project 1"}
+          ];
+
+          this.setState({
+            rows: data,
+          })
+        }
+
+        if(id === '2')
+        {
+          data =  [
+            {"id": 1, "name": "Project 1"},
+            {"id": 2, "name": "Project 2"}
+          ];
+
+          this.setState({
+            rows: data,
+          })
+        }
+
+        if(id === '3')
+        {
+          data =  [
+            {"id": 1, "name": "Project 1"},
+            {"id": 2, "name": "Project 2"},
+            {"id": 3, "name": "Project 3"}
+          ];
+
+          this.setState({
+            rows: data,
+          })
+        }
+
+        if(id === '4')
+        {
+          data =  [
+            {"id": 1, "name": "Project 1"},
+            {"id": 2, "name": "Project 2"},
+            {"id": 3, "name": "Project 3"},
+            {"id": 4, "name": "Project 4"}
+          ];
+
+          this.setState({
+            rows: data,
+          })
+        }
     }
 
    	render()

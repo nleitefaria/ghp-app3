@@ -58,7 +58,7 @@ class EmployeesAddModal extends React.Component
                   <Input type="text" value={this.state.inputvalue} onChange={this.handleChange} />
                 </FormGroup>
                 <FormGroup>
-                  <Label><b>Date</b></Label>
+                  <Label><b>Date:</b></Label>
                   <Input type="date" name="date" id="exampleDate" placeholder="date placeholder" />
                 </FormGroup>
                 <FormGroup>

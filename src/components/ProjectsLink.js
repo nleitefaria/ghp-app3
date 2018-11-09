@@ -14,7 +14,7 @@ class ProjectsLink extends React.Component
          <div>
             <NavLink to={`/projects/${this.props.id}`}>Projects</NavLink>
             <div>
-              <Route path="/projects" component={Projects}/>
+							<Route exact path="/projects/:id" component={Projects}/>
             </div>
          </div>
       );
