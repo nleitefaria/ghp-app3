@@ -9,7 +9,7 @@ import EmployeesDeleteModal from './EmployeesDeleteModal';
 import ProjectsLink from './ProjectsLink';
 
 //const URL = 'http://localhost:3001/employees';
-const URL = 'http://jws-app-os-app3.7e14.starter-us-west-2.openshiftapps.com/employees/'
+const URL = 'https://sec-os-app3.7e14.starter-us-west-2.openshiftapps.com/employees'
 
 var divStyleOutter = {
   'width': '300px'
