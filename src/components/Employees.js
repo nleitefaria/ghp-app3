@@ -8,6 +8,9 @@ import EmployeesEditModal from './EmployeesEditModal';
 import EmployeesDeleteModal from './EmployeesDeleteModal';
 import ProjectsLink from './ProjectsLink';
 
+//const URL = 'http://localhost:3001/employees';
+const URL = 'http://jws-app-os-app3.7e14.starter-us-west-2.openshiftapps.com/employees/'
+
 var divStyleOutter = {
   'width': '300px'
 };
@@ -70,16 +73,12 @@ class Employees extends React.Component
 
     loadData()
     {
-        const data =  [
-          {"id": 1, "name": "Serge Dassin", "startDate": "01/01/2000","role": "PE", "platoon": "Splinkers"},
-          {"id": 2, "name": "Joe Whashingthon", "startDate": "01/02/2000","role": "SE", "platoon": "Super Pros"},
-          {"id": 3, "name": "Albert Curie", "startDate": "01/02/2000","role": "SE", "platoon": "Awesome"},
-          {"id": 4, "name": "Virginie Danon", "startDate": "01/02/2001","role": "SE", "platoon": "Hyper"},
-        ];
-
-        this.setState({
-          rows: data,
-        })
+        fetch(URL)
+		      .then(response => response.json())
+		      .then(data => this.setState({
+		        rows: data
+		      }))
+		      .catch(() => this.setState({ loading: false }));
     }
 
     render()
