@@ -8,8 +8,8 @@ import EmployeesAddModal from './EmployeesAddModal';
 import EmployeesEditModal from './EmployeesEditModal';
 import EmployeesDeleteModal from './EmployeesDeleteModal';
 import ProjectsLink from './ProjectsLink';
+import Loading from './Loading';
 
-//const URL = 'http://localhost:3001/employees';
 const URL = 'https://sec-os-app3.7e14.starter-us-west-2.openshiftapps.com/employees'
 
 var divStyleOutter = {
@@ -22,6 +22,10 @@ var divStyleInner = {
 
 var divStyleInnerLink = {
   'float': 'left', 'width': '80px', 'paddingTop': '5px', 'paddingLeft': '10px'
+};
+
+var divLoading = {
+  'float': 'left', 'width': '300px', 'paddingTop': '0px', 'paddingLeft': '10px'
 };
 
 const ActionCell = ({ id }) => (
@@ -49,7 +53,6 @@ class Employees extends React.Component
     constructor(props)
     {
         super(props);
-
         this.state =
         {
             columns: [
@@ -63,6 +66,7 @@ class Employees extends React.Component
         				{ columnName: 'action', width: 100 }
       			],
             rows: [],
+            loading: true,
         };
 
     }
@@ -78,12 +82,13 @@ class Employees extends React.Component
       {
         const rd = res.data;
         this.setState( {rows: rd} );
+        this.setState( {loading: false} );
       })
     }
 
     render()
     {
-      const { rows, columns, tableColumnExtensions } = this.state;
+      const { rows, columns, tableColumnExtensions, loading } = this.state;
 
       return (
          <div>
@@ -91,6 +96,9 @@ class Employees extends React.Component
             <Container>
                 <Row>
                     <Col xs="1"><EmployeesAddModal></EmployeesAddModal></Col>
+                </Row>
+                <Row>
+                    <Col xs="6"><div style={divLoading}>{loading && <Loading />}</div></Col>
                 </Row>
             </Container>
             <br></br>

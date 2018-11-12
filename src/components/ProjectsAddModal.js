@@ -1,4 +1,6 @@
 import React from 'react';
+import axios from 'axios';
+
 import { FormGroup, Label, Input, Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 
 
@@ -28,6 +30,7 @@ class ProjectsAddModal extends React.Component {
       })
   }
 
+  /*
   handleSubmit (event) {
       //alert(this.state.name);
       this.toggle();
@@ -38,10 +41,34 @@ class ProjectsAddModal extends React.Component {
   addEmployee(event)
   {
     //this.toggle();
-    //alert(event.target.value);
-    //event.preventDefault();
+    alert(event.target.value);
     alert('ICI');
+    event.preventDefault();
+
+  }*/
+
+  handleChange = event => {
+    this.setState({ name: event.target.value });
   }
+
+  handleSubmit = event =>
+  {
+    event.preventDefault();
+
+    const project = {
+      name: this.state.name
+    };
+
+    axios.post(`https://sec-os-app3.7e14.starter-us-west-2.openshiftapps.com/project`, { project })
+      .then(res => {
+        console.log(res);
+        console.log(res.data);
+        alert(res);
+        alert(res.data);
+
+      })
+  }
+
 
   render() {
     return (
@@ -55,6 +82,7 @@ class ProjectsAddModal extends React.Component {
           			<Label>Name</Label>
           			<Input type="text" value={this.state.inputvalue} onChange={this.handleChange} />
           		</FormGroup>
+              <button type="submit">Add</button>
           	</form>
           </ModalBody>
           <ModalFooter>
