@@ -71,6 +71,7 @@ class Projects extends React.Component
 		{
       var id = window.location.href.split('/')[window.location.href.split('/').length - 1];
 
+      
       if(id === 'projects')
       {
           this.loadData();
@@ -94,7 +95,7 @@ class Projects extends React.Component
 
     loadProjectsForEmployee(id)
     {
-        axios.get(URL + "/" + id).then(res =>
+        axios.get(URL + "/employee/" + id).then(res =>
         {
           const rd = res.data;
           this.setState( {rows: rd} );
