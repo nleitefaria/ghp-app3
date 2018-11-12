@@ -1,4 +1,5 @@
 import React from 'react';
+import axios from 'axios';
 
 import { Card, Container, Row, Col} from 'reactstrap';
 import { Grid, Table, TableHeaderRow} from '@devexpress/dx-react-grid-bootstrap4';
@@ -73,12 +74,11 @@ class Employees extends React.Component
 
     loadData()
     {
-        fetch(URL)
-		      .then(response => response.json())
-		      .then(data => this.setState({
-		        rows: data
-		      }))
-		      .catch(() => this.setState({ loading: false }));
+      axios.get(URL).then(res =>
+      {
+        const rd = res.data;
+        this.setState( {rows: rd} );
+      })
     }
 
     render()
