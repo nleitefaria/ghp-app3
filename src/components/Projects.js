@@ -7,6 +7,7 @@ import { Grid, Table, TableHeaderRow} from '@devexpress/dx-react-grid-bootstrap4
 import ProjectsAddModal from './ProjectsAddModal';
 import ProjectsDeleteModal from './ProjectsDeleteModal';
 import EmployeesLink from './EmployeesLink';
+import Loading from './Loading';
 
 const URL = 'https://sec-os-app3.7e14.starter-us-west-2.openshiftapps.com/projects'
 
@@ -20,6 +21,10 @@ var divStyleInner = {
 
 var divStyleInnerLink = {
   'float': 'left', 'width': '80px', 'paddingTop': '5px', 'paddingLeft': '10px'
+};
+
+var divLoading = {
+  'float': 'left', 'width': '300px', 'paddingTop': '0px', 'paddingLeft': '10px'
 };
 
 const ActionCell = ({ id }) => (
@@ -58,12 +63,15 @@ class Projects extends React.Component
         				{ columnName: 'action', width: 100 }
       			],
             rows: [],
+            loading: true,
         };
     }
 
     componentDidMount()
 		{
       var id = window.location.href.split('/')[window.location.href.split('/').length - 1];
+
+      alert(id);
 
       if(id === 'projects')
       {
@@ -82,37 +90,18 @@ class Projects extends React.Component
         {
           const rd = res.data;
           this.setState( {rows: rd} );
+          this.setState( {loading: false} );
         })
     }
 
     loadProjectsForEmployee(id)
     {
-        var dataArr = [];
-        alert("TODO: " + id);
-        var queryString = URL.concat("/").concat(id);
-         fetch(queryString)
-        .then(response => response.json())
-        .then(function(data) {
-          // Create and append the li's to the ul
-          alert(data);
-          var dataArr = [];
-          dataArr.push(data);
-        })
-
-        .then(
-          data => this.setState(
-            {
-              rows: dataArr
-            }
-          )
-        )
-
-        .catch(() => this.setState({ loading: false }));
+        alert('TODO');
     }
 
    	render()
 		{
-	   	const { rows, columns, tableColumnExtensions } = this.state;
+	   	const { rows, columns, tableColumnExtensions, loading } = this.state;
 
       return (
          <div>
@@ -120,6 +109,9 @@ class Projects extends React.Component
          <Container>
              <Row>
                  <Col xs="1"><ProjectsAddModal></ProjectsAddModal></Col>
+             </Row>
+             <Row>
+                 <Col xs="6"><div style={divLoading}>{loading && <Loading />}</div></Col>
              </Row>
          </Container>
          <br></br>
