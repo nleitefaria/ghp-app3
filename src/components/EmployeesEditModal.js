@@ -5,8 +5,10 @@ import { Button, Modal, ModalHeader, ModalBody, ModalFooter, FormGroup, Label, I
 
 const URL = 'https://sec-os-app3.7e14.starter-us-west-2.openshiftapps.com/employee'
 
-class EmployeesEditModal extends React.Component {
-  constructor(props) {
+class EmployeesEditModal extends React.Component
+{
+  constructor(props)
+  {
     super(props);
     this.state = {
       modal: false,
@@ -33,7 +35,6 @@ class EmployeesEditModal extends React.Component {
 
   loadData(id)
   {
-    alert(id);
     axios.get(URL + '/' + id).then(res =>
     {
       const rd = res.data;
@@ -47,19 +48,20 @@ class EmployeesEditModal extends React.Component {
       <div>
         <Button color="primary" onClick={this.toggle}>Edit</Button>
         <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
-          <ModalHeader toggle={this.toggle}>Edit {this.props.id}</ModalHeader>
+          <ModalHeader toggle={this.toggle}>Edit {this.state.employee.name} data</ModalHeader>
           <ModalBody>
-            EDIT TODO
-            <br></br>
-            {this.state.employee.name}
-
-            <br></br>
-
             <form onSubmit={this.handleSubmit}>
               <FormGroup>
                 <Label><b>Name:</b></Label>
-                <Input type="text" value={this.state.employee.name} />
+                <Input type="text" name="name" id="name" value={this.state.employee.name} />
               </FormGroup>
+              <FormGroup>
+                <Label><b>Date:</b></Label>
+                <Input type="date" name="date" id="date" value={this.state.employee.startDate} />
+              </FormGroup>
+
+              
+
             </form>
 
 
