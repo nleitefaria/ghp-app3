@@ -1,4 +1,6 @@
 import React from 'react';
+import axios from 'axios';
+
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 
 const apiURL = 'https://sec-os-app3.7e14.starter-us-west-2.openshiftapps.com/'
