@@ -3,7 +3,7 @@ import axios from 'axios';
 
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter, FormGroup, Label, Input } from 'reactstrap';
 
-const URL = 'https://sec-os-app3.7e14.starter-us-west-2.openshiftapps.com/employee'
+const apiURL = 'https://sec-os-app3.7e14.starter-us-west-2.openshiftapps.com/'
 
 class EmployeesEditModal extends React.Component
 {
@@ -12,6 +12,7 @@ class EmployeesEditModal extends React.Component
     super(props);
     this.state = {
       modal: false,
+      platoons: [],
       employee : {}
     };
 
@@ -29,13 +30,25 @@ class EmployeesEditModal extends React.Component
     });
   }
 
+  loadPlatoons()
+  {
+    axios.get(apiURL + 'platoons').then(res =>
+    {
+      const rd = res.data;
+      this.setState( {platoons: rd} );
+      this.setState( {loading: false} );
+    })
+
+  }
+
   componentDidMount()
   {
+    this.loadPlatoons();
   }
 
   loadData(id)
   {
-    axios.get(URL + '/' + id).then(res =>
+    axios.get(apiURL + 'employee/' + id).then(res =>
     {
       const rd = res.data;
       this.setState( {employee: rd} );
@@ -43,7 +56,14 @@ class EmployeesEditModal extends React.Component
 
   }
 
-  render() {
+  render()
+  {
+    let platoons = this.state.platoons;
+    let optionItems = platoons.map((platoon) =>
+      <option key={platoon.id}>{platoon.name}</option>
+    );
+
+
     return (
       <div>
         <Button color="primary" onClick={this.toggle}>Edit</Button>
@@ -59,18 +79,14 @@ class EmployeesEditModal extends React.Component
                 <Label><b>Date:</b></Label>
                 <Input type="date" name="date" id="date" value={this.state.employee.startDate} />
               </FormGroup>
-
-              
-
+              <FormGroup>
+                <Label><b>Platoon:</b></Label>
+                  <Input type="select" name="select" id="exampleSelect">
+                    <option>Please select one</option>
+                    {optionItems}
+                  </Input>
+              </FormGroup>
             </form>
-
-
-
-
-
-
-
-
           </ModalBody>
           <ModalFooter>
             <Button color="primary" onClick={this.toggle}>Save</Button>{' '}
