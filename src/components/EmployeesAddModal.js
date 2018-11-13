@@ -1,5 +1,8 @@
 import React from 'react';
+import axios from 'axios';
 import { FormGroup, Label, Input, Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
+
+const apiURL = 'https://sec-os-app3.7e14.starter-us-west-2.openshiftapps.com/'
 
 class EmployeesAddModal extends React.Component
 {
@@ -7,6 +10,7 @@ class EmployeesAddModal extends React.Component
     super(props);
     this.state = {
       modal: false,
+      platoons: [],
       name: ''
 
     };
@@ -45,7 +49,29 @@ class EmployeesAddModal extends React.Component
 
   }
 
-  render() {
+  loadPlatoons()
+  {
+    axios.get(apiURL + 'platoons').then(res =>
+    {
+      const rd = res.data;
+      this.setState( {platoons: rd} );
+      this.setState( {loading: false} );
+    })
+
+  }
+
+  componentDidMount()
+  {
+    this.loadPlatoons();
+  }
+
+  render()
+  {
+    let platoons = this.state.platoons;
+    let optionItems = platoons.map((platoon) =>
+      <option key={platoon.id}>{platoon.name}</option>
+    );
+
     return (
       <div>
         <Button color="primary" onClick={this.toggle}>Add</Button>
@@ -93,10 +119,7 @@ class EmployeesAddModal extends React.Component
                   <Label><b>Platoon:</b></Label>
                     <Input type="select" name="select" id="exampleSelect">
                       <option>Please select one</option>
-                      <option>Splinkers</option>
-                      <option>Super Pros</option>
-                      <option>Awesome</option>
-                      <option>Hyper</option>
+                      {optionItems}
                     </Input>
                 </FormGroup>
               </form>
