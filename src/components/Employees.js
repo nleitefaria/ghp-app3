@@ -1,7 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 
-import { Card, Container, Row, Col} from 'reactstrap';
+import { Card, Container, Row, Col, Breadcrumb, BreadcrumbItem} from 'reactstrap';
 import { Grid, Table, TableHeaderRow} from '@devexpress/dx-react-grid-bootstrap4';
 
 import EmployeesAddModal from './EmployeesAddModal';
@@ -92,7 +92,11 @@ class Employees extends React.Component
 
       return (
          <div>
-            <br></br>
+         <br></br>
+         <Breadcrumb>
+           <BreadcrumbItem active>Emolyees</BreadcrumbItem>
+         </Breadcrumb>
+         <br></br>
             <Container>
                 <Row>
                     <Col xs="1"><EmployeesAddModal></EmployeesAddModal></Col>

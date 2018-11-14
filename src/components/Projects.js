@@ -1,7 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 
-import { Card, Container, Row, Col} from 'reactstrap';
+import { Card, Container, Row, Col, Breadcrumb, BreadcrumbItem } from 'reactstrap';
 import { Grid, Table, TableHeaderRow} from '@devexpress/dx-react-grid-bootstrap4';
 
 import ProjectsAddModal from './ProjectsAddModal';
@@ -71,7 +71,7 @@ class Projects extends React.Component
 		{
       var id = window.location.href.split('/')[window.location.href.split('/').length - 1];
 
-      
+
       if(id === 'projects')
       {
           this.loadData();
@@ -108,8 +108,12 @@ class Projects extends React.Component
 	   	const { rows, columns, tableColumnExtensions, loading } = this.state;
 
       return (
-         <div>
-         <br></br>
+        <div>
+        <br></br>
+        <Breadcrumb>
+          <BreadcrumbItem active>Projects</BreadcrumbItem>
+        </Breadcrumb>
+        <br></br>
          <Container>
              <Row>
                  <Col xs="1"><ProjectsAddModal></ProjectsAddModal></Col>
