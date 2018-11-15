@@ -1,18 +1,47 @@
 import React from 'react';
 
 import Users from './Users';
-import { OtherProvider } from "./OtherContext";
+import { OtherProvider } from "../context/OtherContext";
 
 class Other extends React.Component
 {
-  state = {
-    firstName: "Andreas",
-    lastName: "Sanchez"
-  };
 
-  render()
+  constructor(props)
   {
-    return (
+     super(props);
+
+     this.toggle = this.toggle.bind(this);
+     this.state = {
+       activeTab: '1',
+       firstName: "Henri",
+       lastName: "Matisse"
+     };
+  }
+
+  toggle(tab)
+  {
+     if (this.state.activeTab !== tab)
+     {
+       this.setState({
+         activeTab: tab
+       });
+     }
+   }
+
+   componentDidMount()
+   {
+   }
+
+
+
+
+
+
+
+
+   render()
+   {
+     return (
       <div>
       <br></br>
         OTHER
@@ -21,7 +50,7 @@ class Other extends React.Component
         </OtherProvider>
       </div>
     );
-  }
+   }
 }
 
 export default Other;
