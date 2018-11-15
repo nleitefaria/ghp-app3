@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { OtherConsumer } from "./OtherContext";
+import { OtherConsumer } from "../context/OtherContext";
 
 class Users extends React.Component
 {
