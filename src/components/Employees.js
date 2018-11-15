@@ -94,7 +94,7 @@ class Employees extends React.Component
          <div>
          <br></br>
          <Breadcrumb>
-           <BreadcrumbItem active>Emolyees</BreadcrumbItem>
+           <BreadcrumbItem active>Employees</BreadcrumbItem>
          </Breadcrumb>
          <br></br>
             <Container>
