@@ -1,22 +1,47 @@
 import React from 'react';
+import axios from 'axios';
+
 import { TabContent, TabPane, Nav, NavItem, NavLink, Row, Col, Breadcrumb, BreadcrumbItem} from 'reactstrap';
 import classnames from 'classnames';
 
 import Users from './Users';
+import Todos from './Todos';
+
 import { OtherProvider } from "../context/OtherContext";
+
+
+const apiURL = 'https://jsonplaceholder.typicode.com/'
 
 class Other extends React.Component
 {
-
   constructor(props)
   {
      super(props);
      this.state = {
        activeTab: '1',
-       firstName: "Henri",
-       lastName: "Matisse"
+       loading : true,
+       todoName: "Todo 1",
+       users: [],
+       todos: [],
+       otherDoStuff: () => this.doStuff(),
      };
      this.toggle = this.toggle.bind(this);
+  }
+
+  doStuff()
+  {
+    alert("Doing stuff...");
+  }
+  
+  getUsers()
+  {
+    axios.get(apiURL + 'users').then(res =>
+      {
+        const rd = res.data;
+        this.setState( {users: rd} );
+        this.setState( {loading: false} );
+      })
+
   }
 
   toggle(tab)
@@ -27,15 +52,16 @@ class Other extends React.Component
          activeTab: tab
        });
      }
-   }
+  }
 
-   componentDidMount()
-   {
-   }
+  componentDidMount()
+  {
+    this.getUsers();
+  }
 
-   render()
-   {
-     return (
+  render()
+  {
+    return (
       <div>
       <br></br>
         <Breadcrumb>
@@ -67,14 +93,16 @@ class Other extends React.Component
         <TabPane tabId="2">
           <Row>
             <Col sm="12">
-              Todos
+              <OtherProvider value={this.state}>
+        					<Todos />
+        			</OtherProvider>
             </Col>
           </Row>
         </TabPane>
       </TabContent>
       </div>
     );
-   }
+  }
 }
 
 export default Other;
