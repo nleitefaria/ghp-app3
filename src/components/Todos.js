@@ -1,23 +1,50 @@
 import React from 'react';
 
+import { Card } from 'reactstrap';
+import { Grid, Table, TableHeaderRow} from '@devexpress/dx-react-grid-bootstrap4';
+
 import { OtherConsumer } from "../context/OtherContext";
 
 class Todos extends React.Component
 {
-   render() {
+   constructor(props)
+   {
+      super(props);
+      this.state =
+      {
+         columns: [
+            { name: 'id', title: 'ID' },
+            { name: 'title', title: 'Title' }              
+         ],
+         //rows: [],
+         //loading: true,
+      };
+   }
+
+   render() 
+   {
+      const { columns } = this.state;
+
       return (
          <div>
-            Todos:
             <br></br>
-            <OtherConsumer>
-            {
-               context =>
-               <React.Fragment>
-                  <p><b>Todo name:</b> {context.todoName}</p>
-               </React.Fragment>
-        }
-        </OtherConsumer>
-      </div>
+               <OtherConsumer>
+               {
+                  context =>
+                     <React.Fragment>
+                        <br></br>
+                        <Card>
+                           <Grid rows={context.todos} columns={columns} >
+                              <Table />
+                                 <TableHeaderRow />
+                           </Grid>
+                        </Card>
+                        <br></br>
+                        <button type="submit" onClick={(e) => context.otherDoStuffForTodos()}>Do Stuff in parent</button>  
+                     </React.Fragment>
+               }
+               </OtherConsumer>
+         </div>
       );
    }
 }

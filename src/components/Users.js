@@ -43,7 +43,7 @@ class Users extends React.Component
                 </Grid>
               </Card>
               <br></br>
-              <button type="submit" onClick={(e) => context.otherDoStuff()}>Do Stuff in parent</button>  
+              <button type="submit" onClick={(e) => context.otherDoStuffForUsers()}>Do Stuff in parent</button>  
             </React.Fragment>
         }
         </OtherConsumer>

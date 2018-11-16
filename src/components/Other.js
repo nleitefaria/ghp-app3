@@ -23,14 +23,20 @@ class Other extends React.Component
        todoName: "Todo 1",
        users: [],
        todos: [],
-       otherDoStuff: () => this.doStuff(),
+       otherDoStuffForUsers: () => this.doStuffForUsers(),
+       otherDoStuffForTodos: () => this.doStuffForTodos()
      };
      this.toggle = this.toggle.bind(this);
   }
 
-  doStuff()
+  doStuffForUsers()
   {
-    alert("Doing stuff...");
+    alert("Doing stuff ... for Users");
+  }
+
+  doStuffForTodos()
+  {
+    alert("Doing stuff ... forTodos");
   }
   
   getUsers()
@@ -41,7 +47,16 @@ class Other extends React.Component
         this.setState( {users: rd} );
         this.setState( {loading: false} );
       })
+  }
 
+  getTodos()
+  {
+    axios.get(apiURL + 'todos').then(res =>
+      {
+        const rd = res.data;
+        this.setState( {todos: rd} );
+        this.setState( {loading: false} );
+      })
   }
 
   toggle(tab)
@@ -57,6 +72,7 @@ class Other extends React.Component
   componentDidMount()
   {
     this.getUsers();
+    this.getTodos();
   }
 
   render()
