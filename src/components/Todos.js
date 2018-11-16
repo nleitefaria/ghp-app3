@@ -14,8 +14,7 @@ class Todos extends React.Component
       {
          columns: [
             { name: 'id', title: 'ID' },
-            { name: 'title', title: 'Title' },
-            { name: 'allocation', title: 'Allocation' }
+            { name: 'title', title: 'Title' }
          ],
          //rows: [],
          //loading: true,

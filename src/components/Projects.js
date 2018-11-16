@@ -56,7 +56,8 @@ class Projects extends React.Component
         this.state =
         {
             columns: [
-                { name: 'name', title: 'Name'},
+                { name: 'name', title: 'Name'},               
+                { name: 'allocation', title: 'Allocation' },
                 { name: 'action', title: 'Action'}
             ],
 						tableColumnExtensions: [
