@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Card, Container, Row, Col, Breadcrumb, BreadcrumbItem} from 'reactstrap';
+import { Card } from 'reactstrap';
 import { Grid, Table, TableHeaderRow} from '@devexpress/dx-react-grid-bootstrap4';
 
 import { OtherConsumer } from "../context/OtherContext";
@@ -19,14 +19,14 @@ class Users extends React.Component
         { name: 'email', title: 'Email' },   
         { name: 'phone', title: 'Phone' }          
       ],
-      rows: [],
-      loading: true,
+      //rows: [],
+      //loading: true,
     };
   }
   
   render() 
   {
-    const { rows, columns, loading } = this.state;
+    const { columns } = this.state;
 
     return (
       <div>
