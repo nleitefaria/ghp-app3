@@ -36,7 +36,7 @@ class Other extends React.Component
 
   doStuffForTodos()
   {
-    alert("Doing stuff ... forTodos");
+    alert("Doing stuff ... for Todos");
   }
   
   getUsers()
