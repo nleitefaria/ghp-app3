@@ -47,7 +47,7 @@ const Cell = (props) => {
 
 };
 
-class Projects extends React.Component
+class ProjectsOfEmplyees extends React.Component
 {
 	constructor(props)
     {
@@ -57,6 +57,7 @@ class Projects extends React.Component
         {
             columns: [
                 { name: 'name', title: 'Name'},
+                { name: 'allocation', title: 'Allocation' },
                 { name: 'action', title: 'Action'}
             ],
 						tableColumnExtensions: [
@@ -69,20 +70,22 @@ class Projects extends React.Component
 
     componentDidMount()
 		{
-      //var id = window.location.href.split('/')[window.location.href.split('/').length - 1];
+
+      var id = window.location.href.split('/')[window.location.href.split('/').length - 1];
 
 
       //if(id === 'projects')
       //{
-          this.loadData();
+      //    this.loadData();
       //}
       //else
       //{
-      //    this.loadProjectsForEmployee(id);
+          this.loadProjectsForEmployee(id);
 
       //}
 		}
 
+    /*
     loadData()
     {
         axios.get(URL).then(res =>
@@ -92,8 +95,8 @@ class Projects extends React.Component
           this.setState( {loading: false} );
         })
     }
+    */
 
-    /*
     loadProjectsForEmployee(id)
     {
         axios.get(URL + "/employee/" + id).then(res =>
@@ -103,7 +106,6 @@ class Projects extends React.Component
           this.setState( {loading: false} );
         })
     }
-    */
 
    	render()
 		{
@@ -136,4 +138,4 @@ class Projects extends React.Component
    }
 }
 
-export default Projects;
+export default ProjectsOfEmplyees;

@@ -1,20 +1,16 @@
 import React from 'react';
-import {
-	  Route,
-	  NavLink
-}
-from "react-router-dom";
+import { Route, NavLink } from "react-router-dom";
 
-import Projects from './Projects';
+import ProjectsOfEmployee from './ProjectsOfEmployee';
 
 class ProjectsLink extends React.Component
 {
   render() {
       return (
          <div>
-            <NavLink to={`/projects/${this.props.id}`}>Projects</NavLink>
+            <NavLink to={`/projects/employee/${this.props.id}`}>Projects</NavLink>
             <div>
-							<Route exact path="/projects/:id" component={Projects}/>
+							<Route path="/projects/employee/:id" component={ProjectsOfEmployee}/>
             </div>
          </div>
       );
