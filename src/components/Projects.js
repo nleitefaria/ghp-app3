@@ -69,18 +69,7 @@ class Projects extends React.Component
 
     componentDidMount()
 		{
-      //var id = window.location.href.split('/')[window.location.href.split('/').length - 1];
-
-
-      //if(id === 'projects')
-      //{
-          this.loadData();
-      //}
-      //else
-      //{
-      //    this.loadProjectsForEmployee(id);
-
-      //}
+        this.loadData();
 		}
 
     loadData()
@@ -92,18 +81,6 @@ class Projects extends React.Component
           this.setState( {loading: false} );
         })
     }
-
-    /*
-    loadProjectsForEmployee(id)
-    {
-        axios.get(URL + "/employee/" + id).then(res =>
-        {
-          const rd = res.data;
-          this.setState( {rows: rd} );
-          this.setState( {loading: false} );
-        })
-    }
-    */
 
    	render()
 		{
