@@ -1,24 +1,15 @@
 import React, { Component } from 'react';
-import {
-	  Route,
-	  NavLink,
-	  HashRouter
-}
-from "react-router-dom";
+import { Route, NavLink, HashRouter} from "react-router-dom";
 
-import
-{
-	  Container, Row, Col
-}
-from 'reactstrap';
+import { Container, Row, Col } from 'reactstrap';
+import axios from 'axios';
 
 import Employees from './Employees';
 import Projects from './Projects';
 import ProjectsOfEmployee from './ProjectsOfEmployee';
+import EmployeesOfProject from './EmployeesOfProject';
 import Other from './Other';
 import Header from './Header';
-
-import axios from 'axios';
 
 const URL = 'https://sec-os-app3.7e14.starter-us-west-2.openshiftapps.com/employees/count'
 
@@ -36,9 +27,7 @@ class Main extends Component
 
 	componentDidMount()
 	{
-
       this.loadData();
-
 	}
 
 	loadData()
@@ -51,8 +40,7 @@ class Main extends Component
 		})
 	}
 
-
-	  render() {
+	render() {
 	    return (
 				<HashRouter>
 	            	<div>
@@ -64,6 +52,7 @@ class Main extends Component
 														<NavLink to="/"><b>Employees</b></NavLink> | <NavLink to="/projects"><b>Projects</b></NavLink> | <NavLink to="/other"><b>Other (Context API)</b></NavLink>
 	            								<div className="content">
 	            									<Route exact path="/" component={Employees}/>
+																<Route path="/employees/project/:id" component={EmployeesOfProject}/>
 	            									<Route exact path="/projects" component={Projects}/>
 																<Route path="/projects/employee/:id" component={ProjectsOfEmployee}/>
 	            									<Route exact path="/other" component={Other}/>
@@ -75,7 +64,7 @@ class Main extends Component
 	            	</div>
 	            </HashRouter>
 	    );
-	  }
+	}
 }
 
 export default Main;

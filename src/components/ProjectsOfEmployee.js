@@ -70,32 +70,9 @@ class ProjectsOfEmplyees extends React.Component
 
     componentDidMount()
 		{
-
       var id = window.location.href.split('/')[window.location.href.split('/').length - 1];
-
-
-      //if(id === 'projects')
-      //{
-      //    this.loadData();
-      //}
-      //else
-      //{
-          this.loadProjectsForEmployee(id);
-
-      //}
+      this.loadProjectsForEmployee(id);
 		}
-
-    /*
-    loadData()
-    {
-        axios.get(URL).then(res =>
-        {
-          const rd = res.data;
-          this.setState( {rows: rd} );
-          this.setState( {loading: false} );
-        })
-    }
-    */
 
     loadProjectsForEmployee(id)
     {
