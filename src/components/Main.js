@@ -5,8 +5,8 @@ import { Container, Row, Col } from 'reactstrap';
 import axios from 'axios';
 
 import Employees from './employees/Employees';
-import Projects from './Projects';
-import ProjectsOfEmployee from './ProjectsOfEmployee';
+import Projects from './projects/Projects';
+import ProjectsOfEmployee from './projects/ProjectsOfEmployee';
 import EmployeesOfProject from './employees/EmployeesOfProject';
 import Other from './other/Other';
 import Header from './Header';

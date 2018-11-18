@@ -6,8 +6,8 @@ import { Grid, Table, TableHeaderRow} from '@devexpress/dx-react-grid-bootstrap4
 
 import ProjectsAddModal from './ProjectsAddModal';
 import ProjectsDeleteModal from './ProjectsDeleteModal';
-import EmployeesLink from './employees/EmployeesLink';
-import Loading from './Loading';
+import EmployeesLink from './../employees/EmployeesLink';
+import Loading from './../Loading';
 
 const URL = 'https://sec-os-app3.7e14.starter-us-west-2.openshiftapps.com/projects'
 
