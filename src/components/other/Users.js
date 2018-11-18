@@ -3,7 +3,7 @@ import React from 'react';
 import { Card } from 'reactstrap';
 import { Grid, Table, TableHeaderRow} from '@devexpress/dx-react-grid-bootstrap4';
 
-import { OtherConsumer } from "../context/OtherContext";
+import { OtherConsumer } from "../../context/OtherContext";
 
 class Users extends React.Component
 {
@@ -14,17 +14,17 @@ class Users extends React.Component
     {
       columns: [
         { name: 'id', title: 'ID' },
-        { name: 'name', title: 'Name' },  
-        { name: 'username', title: 'Username' },   
-        { name: 'email', title: 'Email' },   
-        { name: 'phone', title: 'Phone' }          
+        { name: 'name', title: 'Name' },
+        { name: 'username', title: 'Username' },
+        { name: 'email', title: 'Email' },
+        { name: 'phone', title: 'Phone' }
       ],
       //rows: [],
       //loading: true,
     };
   }
-  
-  render() 
+
+  render()
   {
     const { columns } = this.state;
 
@@ -43,7 +43,7 @@ class Users extends React.Component
                 </Grid>
               </Card>
               <br></br>
-              <button type="submit" onClick={(e) => context.otherDoStuffForUsers()}>Do Stuff in parent</button>  
+              <button type="submit" onClick={(e) => context.otherDoStuffForUsers()}>Do Stuff in parent</button>
             </React.Fragment>
         }
         </OtherConsumer>

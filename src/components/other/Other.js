@@ -7,7 +7,7 @@ import classnames from 'classnames';
 import Users from './Users';
 import Todos from './Todos';
 
-import { OtherProvider } from "../context/OtherContext";
+import { OtherProvider } from "../../context/OtherContext";
 
 
 const apiURL = 'https://jsonplaceholder.typicode.com/'
@@ -38,7 +38,7 @@ class Other extends React.Component
   {
     alert("Doing stuff ... for Todos");
   }
-  
+
   getUsers()
   {
     axios.get(apiURL + 'users').then(res =>

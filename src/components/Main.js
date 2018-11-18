@@ -8,7 +8,7 @@ import Employees from './Employees';
 import Projects from './Projects';
 import ProjectsOfEmployee from './ProjectsOfEmployee';
 import EmployeesOfProject from './EmployeesOfProject';
-import Other from './Other';
+import Other from './other/Other';
 import Header from './Header';
 
 const URL = 'https://sec-os-app3.7e14.starter-us-west-2.openshiftapps.com/employees/count'

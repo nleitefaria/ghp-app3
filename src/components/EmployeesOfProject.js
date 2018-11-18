@@ -79,7 +79,6 @@ class Employees extends React.Component
 
     loadEmployeesForProject(id)
     {
-        alert(id);
         axios.get(URL + "/project/" + id).then(res =>
         {
           const rd = res.data;

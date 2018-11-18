@@ -3,7 +3,7 @@ import React from 'react';
 import { Card } from 'reactstrap';
 import { Grid, Table, TableHeaderRow} from '@devexpress/dx-react-grid-bootstrap4';
 
-import { OtherConsumer } from "../context/OtherContext";
+import { OtherConsumer } from "../../context/OtherContext";
 
 class Todos extends React.Component
 {
@@ -21,7 +21,7 @@ class Todos extends React.Component
       };
    }
 
-   render() 
+   render()
    {
       const { columns } = this.state;
 
@@ -40,7 +40,7 @@ class Todos extends React.Component
                            </Grid>
                         </Card>
                         <br></br>
-                        <button type="submit" onClick={(e) => context.otherDoStuffForTodos()}>Do Stuff in parent</button>  
+                        <button type="submit" onClick={(e) => context.otherDoStuffForTodos()}>Do Stuff in parent</button>
                      </React.Fragment>
                }
                </OtherConsumer>
