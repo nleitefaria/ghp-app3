@@ -4,10 +4,10 @@ import { Route, NavLink, HashRouter} from "react-router-dom";
 import { Container, Row, Col } from 'reactstrap';
 import axios from 'axios';
 
-import Employees from './Employees';
+import Employees from './employees/Employees';
 import Projects from './Projects';
 import ProjectsOfEmployee from './ProjectsOfEmployee';
-import EmployeesOfProject from './EmployeesOfProject';
+import EmployeesOfProject from './employees/EmployeesOfProject';
 import Other from './other/Other';
 import Header from './Header';
 
