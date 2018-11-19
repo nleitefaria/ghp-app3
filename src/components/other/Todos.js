@@ -7,24 +7,8 @@ import { OtherConsumer } from "../../context/OtherContext";
 
 class Todos extends React.Component
 {
-   constructor(props)
-   {
-      super(props);
-      this.state =
-      {
-         columns: [
-            { name: 'id', title: 'ID' },
-            { name: 'title', title: 'Title' }
-         ],
-         //rows: [],
-         //loading: true,
-      };
-   }
-
    render()
    {
-      const { columns } = this.state;
-
       return (
          <div>
             <br></br>
@@ -34,7 +18,7 @@ class Todos extends React.Component
                      <React.Fragment>
                         <br></br>
                         <Card>
-                           <Grid rows={context.todos} columns={columns} >
+                           <Grid rows={context.todos} columns={context.columnsOfTodos} >
                               <Table />
                                  <TableHeaderRow />
                            </Grid>

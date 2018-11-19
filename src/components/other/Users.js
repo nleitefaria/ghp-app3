@@ -12,13 +12,13 @@ class Users extends React.Component
     super(props);
     this.state =
     {
-      columns: [
-        { name: 'id', title: 'ID' },
-        { name: 'name', title: 'Name' },
-        { name: 'username', title: 'Username' },
-        { name: 'email', title: 'Email' },
-        { name: 'phone', title: 'Phone' }
-      ],
+//      columns: [
+//        { name: 'id', title: 'ID' },
+//        { name: 'name', title: 'Name' },
+//        { name: 'username', title: 'Username' },
+//        { name: 'email', title: 'Email' },
+//        { name: 'phone', title: 'Phone' }
+//      ],
       //rows: [],
       //loading: true,
     };
@@ -26,8 +26,6 @@ class Users extends React.Component
 
   render()
   {
-    const { columns } = this.state;
-
     return (
       <div>
         <br></br>
@@ -37,7 +35,7 @@ class Users extends React.Component
             <React.Fragment>
               <br></br>
               <Card>
-                <Grid rows={context.users} columns={columns} >
+                <Grid rows={context.users} columns={context.columnsOfUsers} >
                     <Table />
                         <TableHeaderRow />
                 </Grid>

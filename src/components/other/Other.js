@@ -9,7 +9,6 @@ import Todos from './Todos';
 
 import { OtherProvider } from "../../context/OtherContext";
 
-
 const apiURL = 'https://jsonplaceholder.typicode.com/'
 
 class Other extends React.Component
@@ -22,7 +21,18 @@ class Other extends React.Component
        loading : true,
        todoName: "Todo 1",
        users: [],
+       columnsOfUsers: [
+           { name: 'id', title: 'ID' },
+           { name: 'name', title: 'Name' },
+           { name: 'username', title: 'Username' },
+           { name: 'email', title: 'Email' },
+           { name: 'phone', title: 'Phone' }
+       ],
        todos: [],
+       columnsOfTodos: [
+           { name: 'id', title: 'ID' },
+           { name: 'title', title: 'Title' }
+       ], 
        otherDoStuffForUsers: () => this.doStuffForUsers(),
        otherDoStuffForTodos: () => this.doStuffForTodos()
      };
