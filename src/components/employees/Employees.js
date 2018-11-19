@@ -12,17 +12,33 @@ import Loading from '../Loading';
 
 const apiURL = 'https://sec-os-app3.7e14.starter-us-west-2.openshiftapps.com/'
 
-const ActionCell = ({ id }) => (
-  <Table.Cell>
-      <table>
-        <tr>
-          <td><EmployeesEditModal id={id}></EmployeesEditModal></td>
-          <td><EmployeesDeleteModal id={id}></EmployeesDeleteModal></td>
-          <td><ProjectsLink id={id}/></td>
-        </tr>
-      </table>
-  </Table.Cell>
-);
+	var divStyleOutter = {
+		  'width': '300px'
+		};
+
+		var divStyleInner = {
+		  'float': 'left', 'width': '80px'
+		};
+
+		var divStyleInnerLink = {
+		  'float': 'left', 'width': '80px', 'paddingTop': '5px', 'paddingLeft': '10px'
+		};
+
+		var divLoading = {
+		  'float': 'left', 'width': '300px', 'paddingTop': '0px', 'paddingLeft': '10px'
+		};
+
+		const ActionCell = ({ id }) => (
+		  <Table.Cell>
+		    <span>
+		      <div style={divStyleOutter}>
+		       <div style={divStyleInner}><EmployeesEditModal id={id}></EmployeesEditModal></div>
+		       <div style={divStyleInner}><EmployeesDeleteModal id={id}></EmployeesDeleteModal></div>
+		       <div style={divStyleInnerLink}><ProjectsLink id={id}/></div>
+		      </div>
+		    </span>
+		  </Table.Cell>
+		);
 
 const Cell = (props) => {
   const { column, row } = props;
@@ -85,7 +101,7 @@ class Employees extends React.Component
                     <Col xs="1"><EmployeesAddModal></EmployeesAddModal></Col>
                 </Row>
                 <Row>
-                    <Col xs="6"><div className="divLoading">{loading && <Loading />}</div></Col>
+                    <Col xs="6"><div style={divLoading}>{loading && <Loading />}</div></Col>
                 </Row>
             </Container>
             <br></br>
