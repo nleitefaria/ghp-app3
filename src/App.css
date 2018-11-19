@@ -22,6 +22,36 @@
   color: #61dafb;
 }
 
+.divStyleOutter =
+{
+  width : 300px
+};
+
+.divStyleInner =
+{
+  float : left;
+  width : 80px
+};
+
+.divStyleInnerLink =
+{
+   float : left,
+   width : 80px;
+   paddingTop : 5px;
+   paddingLeft : 10px
+};
+
+.divLoading =
+{
+  float : left;
+  width : 300px;
+  paddingTop: 0px; 
+  paddingLeft: 10px
+};
+
+
+
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
