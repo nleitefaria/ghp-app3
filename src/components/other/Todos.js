@@ -10,11 +10,10 @@ class Todos extends React.Component
    render()
    {
       return (
-         <div>
-            <br></br>
-               <OtherConsumer>
-               {
-                  context =>
+         <div>                
+            <OtherConsumer>
+            {
+            	context =>
                      <React.Fragment>
                         <br></br>
                         <Card>

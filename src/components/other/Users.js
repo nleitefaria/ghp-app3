@@ -7,28 +7,10 @@ import { OtherConsumer } from "../../context/OtherContext";
 
 class Users extends React.Component
 {
-  constructor(props)
-  {
-    super(props);
-    this.state =
-    {
-//      columns: [
-//        { name: 'id', title: 'ID' },
-//        { name: 'name', title: 'Name' },
-//        { name: 'username', title: 'Username' },
-//        { name: 'email', title: 'Email' },
-//        { name: 'phone', title: 'Phone' }
-//      ],
-      //rows: [],
-      //loading: true,
-    };
-  }
-
   render()
   {
     return (
       <div>
-        <br></br>
         <OtherConsumer>
         {
           context =>

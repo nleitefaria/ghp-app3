@@ -5,10 +5,11 @@ class Loading extends React.Component
    render()
    {
       return (
-         <div>
-            <br></br>
-            Loading data. Please wait.
-         </div>
+    	   <div>
+              <img src={require('./ajax-loader.gif')} alt="loading"/>
+              <br></br>
+              <br></br>
+           </div>
       );
    }
 }
