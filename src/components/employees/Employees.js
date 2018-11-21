@@ -66,25 +66,21 @@ class Employees extends React.Component
       			],
             rows: [],
 						selection: [1],
-            loading: true
+            loading: true,
+						selection: []
         };
-
-				this.changeSelection = selection => this.setState({ selection });
     }
+
+		changeSelection = selection => this.setState({ selection });
+
+	  getRowId(row) {
+	    return row.id;
+	  }
 
 
     componentDidMount()
 	  {
         this.loadData();
-	  }
-
-		//VER ISTO
-		componentDidUpdate()
-	  {
-        //alert(this.state.selection);
-				//this.state.selection.slice(-1);
-				//alert("ICI: " + this.state.selection.slice(-1));
-				//this.setState({ selection: 1 })
 	  }
 
     loadData()
@@ -99,7 +95,12 @@ class Employees extends React.Component
 
     render()
     {
-      const { rows, columns, tableColumnExtensions, loading, selection } = this.state;
+      const { rows, columns, tableColumnExtensions, loading } = this.state;
+
+			var { selection } = this.state;
+	    var selTemp = [];
+	    selTemp.push(selection.slice(-1).pop());
+	    selection = selTemp;
 
       return (
          <div>
@@ -129,12 +130,11 @@ class Employees extends React.Component
          </Container>
          <br></br>
          <Card>
-         	<Grid rows={rows} columns={columns} >
+         	<Grid rows={rows} columns={columns} getRowId={this.getRowId}>
 						<SelectionState selection={selection} onSelectionChange={this.changeSelection} />
          			<Table cellComponent={Cell} columnExtensions={tableColumnExtensions}/>
          				<TableHeaderRow />
-								<TableSelection selectByRowClick highlightRow showSelectionColumn={false}
-          />
+									<TableSelection selectByRowClick highlightRow showSelectionColumn={false} />
           </Grid>
          </Card>
          </div>

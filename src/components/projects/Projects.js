@@ -43,10 +43,9 @@ const Cell = (props) => {
 
 class Projects extends React.Component
 {
-	constructor(props)
-    {
+	 constructor(props)
+   {
         super(props);
-
         this.state =
         {
             columns: [
@@ -58,8 +57,15 @@ class Projects extends React.Component
       			],
             rows: [],
             loading: true,
+            selection: []
         };
     }
+
+    changeSelection = selection => this.setState({ selection });
+
+	  getRowId(row) {
+	    return row.id;
+	  }
 
     componentDidMount()
 		{

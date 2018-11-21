@@ -29,7 +29,7 @@ class Todos extends React.Component
     selTemp.push(selection.slice(-1).pop());
     selection = selTemp;
 
-    alert("Selectd: " + selection);
+    //alert("Selectd: " + selection);
     ////////////////////////////////////////////////////////////////////////////
     //The id is in selection val
     ////////////////////////////////////////////////////////////////////////////
