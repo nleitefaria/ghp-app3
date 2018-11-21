@@ -94,13 +94,14 @@ class ProjectsOfEmplyees extends React.Component
         <Breadcrumb>
           <BreadcrumbItem active>Projects</BreadcrumbItem>
         </Breadcrumb>
-        <br></br>
+        <Container>
+         <Row>
+           <Col xs="6"><div style={divLoading}>{loading && <Loading />}</div></Col>
+         </Row>
+        </Container>
          <Container>
              <Row>
                  <Col xs="1"><ProjectsAddModal></ProjectsAddModal></Col>
-             </Row>
-             <Row>
-                 <Col xs="6"><div style={divLoading}>{loading && <Loading />}</div></Col>
              </Row>
          </Container>
          <br></br>

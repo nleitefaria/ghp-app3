@@ -32,8 +32,6 @@ const ActionCell = ({ id }) => (
   <Table.Cell>
     <span>
       <div style={divStyleOutter}>
-       <div style={divStyleInner}><EmployeesEditModal id={id}></EmployeesEditModal></div>
-       <div style={divStyleInner}><EmployeesDeleteModal id={id}></EmployeesDeleteModal></div>
        <div style={divStyleInnerLink}><ProjectsLink id={id}/></div>
       </div>
     </span>
@@ -97,22 +95,33 @@ class Employees extends React.Component
          <Breadcrumb>
            <BreadcrumbItem active>Employees</BreadcrumbItem>
          </Breadcrumb>
-         <br></br>
-            <Container>
-                <Row>
-                    <Col xs="1"><EmployeesAddModal></EmployeesAddModal></Col>
-                </Row>
-                <Row>
-                    <Col xs="6"><div style={divLoading}>{loading && <Loading />}</div></Col>
-                </Row>
-            </Container>
-            <br></br>
-            <Card>
-                <Grid rows={rows} columns={columns} >
-                    <Table cellComponent={Cell} columnExtensions={tableColumnExtensions}/>
-                        <TableHeaderRow />
-                </Grid>
-            </Card>
+         <Container>
+         	<Row>
+         		<Col xs="6"><div style={divLoading}>{loading && <Loading />}</div></Col>
+         	</Row>
+         </Container>
+         <Container>
+            <Row>
+              <Col xs="1"><EmployeesAddModal></EmployeesAddModal></Col>
+              <Col xs="1">
+                 <div style={divStyleInner}>
+                   <EmployeesEditModal id='1'></EmployeesEditModal>
+                 </div>
+              </Col>
+              <Col xs="1">
+                 <div style={divStyleInner}>
+                   <EmployeesDeleteModal id='1'></EmployeesDeleteModal>
+                 </div>
+              </Col>
+            </Row>
+          </Container>
+          <br></br>
+          <Card>
+            <Grid rows={rows} columns={columns} >
+              <Table cellComponent={Cell} columnExtensions={tableColumnExtensions}/>
+                <TableHeaderRow />
+            </Grid>
+          </Card>
          </div>
       );
    }

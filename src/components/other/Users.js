@@ -1,14 +1,38 @@
 import React from 'react';
 
 import { Card } from 'reactstrap';
-import { Grid, Table, TableHeaderRow} from '@devexpress/dx-react-grid-bootstrap4';
+import { Grid, Table, TableHeaderRow, TableSelection } from '@devexpress/dx-react-grid-bootstrap4';
+import { SelectionState } from '@devexpress/dx-react-grid';
 
 import { OtherConsumer } from "../../context/OtherContext";
 
 class Users extends React.Component
 {
+  constructor(props)
+  {
+    super(props);
+    this.state = {
+      selection: [],
+    };
+  }
+
+  changeSelection = selection => this.setState({ selection });
+
+  getRowId(row) {
+    return row.id;
+  }
+
   render()
   {
+    var { selection } = this.state;
+    var selTemp = [];
+    selTemp.push(selection.slice(-1).pop());
+    selection = selTemp;
+
+    //alert("Selectd: " + selection);
+    ////////////////////////////////////////////////////////////////////////////
+    //The id is in selection val
+    ////////////////////////////////////////////////////////////////////////////
     return (
       <div>
         <OtherConsumer>
@@ -17,9 +41,11 @@ class Users extends React.Component
             <React.Fragment>
               <br></br>
               <Card>
-                <Grid rows={context.users} columns={context.columnsOfUsers} >
+                <Grid rows={context.users} columns={context.columnsOfUsers}  getRowId={this.getRowId}>
+                  <SelectionState selection={selection} onSelectionChange={this.changeSelection} />
                     <Table />
-                        <TableHeaderRow />
+                      <TableHeaderRow />
+                        <TableSelection selectByRowClick highlightRow showSelectionColumn={false} />
                 </Grid>
               </Card>
               <br></br>

@@ -5,7 +5,6 @@ import { Card, Container, Row, Col, Breadcrumb, BreadcrumbItem } from 'reactstra
 import { Grid, Table, TableHeaderRow} from '@devexpress/dx-react-grid-bootstrap4';
 
 import ProjectsAddModal from './ProjectsAddModal';
-import ProjectsDeleteModal from './ProjectsDeleteModal';
 import EmployeesLink from './../employees/EmployeesLink';
 import Loading from './../Loading';
 
@@ -13,10 +12,6 @@ const URL = 'https://sec-os-app3.7e14.starter-us-west-2.openshiftapps.com/projec
 
 var divStyleOutter = {
   'width': '300px'
-};
-
-var divStyleInner = {
-  'float': 'left', 'width': '80px'
 };
 
 var divStyleInnerLink = {
@@ -30,7 +25,6 @@ var divLoading = {
 const ActionCell = ({ id }) => (
 		  <Table.Cell>
 				<div style={divStyleOutter}>
-				 <div style={divStyleInner}><ProjectsDeleteModal></ProjectsDeleteModal></div>
          <div style={divStyleInnerLink}><EmployeesLink id={id}/></div>
 		    </div>
 		  </Table.Cell>
@@ -100,7 +94,7 @@ class Projects extends React.Component
         <Container>
              <Row>
                  <Col xs="1"><ProjectsAddModal></ProjectsAddModal></Col>
-             </Row>          
+             </Row>
         </Container>
         <br></br>
         <Card>

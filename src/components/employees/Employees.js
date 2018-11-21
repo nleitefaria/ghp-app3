@@ -2,7 +2,8 @@ import React from 'react';
 import axios from 'axios';
 
 import { Card, Container, Row, Col, Breadcrumb, BreadcrumbItem} from 'reactstrap';
-import { Grid, Table, TableHeaderRow} from '@devexpress/dx-react-grid-bootstrap4';
+import { Grid, Table, TableHeaderRow, TableSelection } from '@devexpress/dx-react-grid-bootstrap4';
+import { SelectionState } from '@devexpress/dx-react-grid';
 
 import EmployeesAddModal from './EmployeesAddModal';
 import EmployeesEditModal from './EmployeesEditModal';
@@ -32,8 +33,6 @@ const apiURL = 'https://sec-os-app3.7e14.starter-us-west-2.openshiftapps.com/'
 		  <Table.Cell>
 		    <span>
 		      <div style={divStyleOutter}>
-		       <div style={divStyleInner}><EmployeesEditModal id={id}></EmployeesEditModal></div>
-		       <div style={divStyleInner}><EmployeesDeleteModal id={id}></EmployeesDeleteModal></div>
 		       <div style={divStyleInnerLink}><ProjectsLink id={id}/></div>
 		      </div>
 		    </span>
@@ -66,13 +65,26 @@ class Employees extends React.Component
         				{ columnName: 'action', width: 100 }
       			],
             rows: [],
-            loading: true,
+						selection: [1],
+            loading: true
         };
+
+				this.changeSelection = selection => this.setState({ selection });
     }
+
 
     componentDidMount()
 	  {
         this.loadData();
+	  }
+
+		//VER ISTO
+		componentDidUpdate()
+	  {
+        //alert(this.state.selection);
+				//this.state.selection.slice(-1);
+				//alert("ICI: " + this.state.selection.slice(-1));
+				//this.setState({ selection: 1 })
 	  }
 
     loadData()
@@ -87,31 +99,44 @@ class Employees extends React.Component
 
     render()
     {
-      const { rows, columns, tableColumnExtensions, loading } = this.state;
+      const { rows, columns, tableColumnExtensions, loading, selection } = this.state;
 
       return (
          <div>
          <br></br>
          <Breadcrumb>
            <BreadcrumbItem active>Employees</BreadcrumbItem>
-         </Breadcrumb> 
+         </Breadcrumb>
          <Container>
          	<Row>
          		<Col xs="6"><div style={divLoading}>{loading && <Loading />}</div></Col>
          	</Row>
-         </Container>        
+         </Container>
          <Container>
              <Row>
                  <Col xs="1"><EmployeesAddModal></EmployeesAddModal></Col>
-             </Row>              
+								 <Col xs="1">
+								 		<div style={divStyleInner}>
+											<EmployeesEditModal id='1'></EmployeesEditModal>
+										</div>
+								 </Col>
+								 <Col xs="1">
+ 								 		<div style={divStyleInner}>
+ 											<EmployeesDeleteModal id='1'></EmployeesDeleteModal>
+ 										</div>
+ 								 </Col>
+             </Row>
          </Container>
          <br></br>
          <Card>
          	<Grid rows={rows} columns={columns} >
-         		<Table cellComponent={Cell} columnExtensions={tableColumnExtensions}/>
-         			<TableHeaderRow />
-                </Grid>
-         </Card>          
+						<SelectionState selection={selection} onSelectionChange={this.changeSelection} />
+         			<Table cellComponent={Cell} columnExtensions={tableColumnExtensions}/>
+         				<TableHeaderRow />
+								<TableSelection selectByRowClick highlightRow showSelectionColumn={false}
+          />
+          </Grid>
+         </Card>
          </div>
       );
    }

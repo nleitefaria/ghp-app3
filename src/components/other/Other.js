@@ -19,7 +19,8 @@ class Other extends React.Component
   constructor(props)
   {
      super(props);
-     this.state = {
+     this.state =
+		 {
        activeTab: '1',
        loading : true,
        todoName: "Todo 1",
@@ -31,14 +32,16 @@ class Other extends React.Component
            { name: 'email', title: 'Email' },
            { name: 'phone', title: 'Phone' }
        ],
+	
        todos: [],
        columnsOfTodos: [
            { name: 'id', title: 'ID' },
            { name: 'title', title: 'Title' }
-       ], 
+       ],
        otherDoStuffForUsers: () => this.doStuffForUsers(),
        otherDoStuffForTodos: () => this.doStuffForTodos()
      };
+
      this.toggle = this.toggle.bind(this);
   }
 
@@ -91,7 +94,7 @@ class Other extends React.Component
   render()
   {
 	  const { loading } = this.state;
-	  
+
     return (
       <div>
       <br></br>
@@ -116,10 +119,10 @@ class Other extends React.Component
         		<Row>
         			<Col sm="12">
         				<OtherProvider value={this.state}>
-        					<br></br>       					
+        					<br></br>
         						<Row>
         							<Col xs="6"><div style={divLoading}>{loading && <Loading />}</div></Col>
-        						</Row>     								
+        						</Row>
         					<Users />
         				</OtherProvider>
         			</Col>
@@ -129,10 +132,10 @@ class Other extends React.Component
         		<Row>
         			<Col sm="12">
         				<OtherProvider value={this.state}>
-        				<br></br>       					
+        				<br></br>
         						<Row>
         							<Col xs="6"><div style={divLoading}>{loading && <Loading />}</div></Col>
-        						</Row>       					
+        						</Row>
         				<Todos />
         			</OtherProvider>
             </Col>
