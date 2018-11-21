@@ -117,12 +117,12 @@ class Employees extends React.Component
                  <Col xs="1"><EmployeesAddModal></EmployeesAddModal></Col>
 								 <Col xs="1">
 								 		<div style={divStyleInner}>
-											<EmployeesEditModal id='1'></EmployeesEditModal>
+											<EmployeesEditModal id={selection}></EmployeesEditModal>
 										</div>
 								 </Col>
 								 <Col xs="1">
  								 		<div style={divStyleInner}>
- 											<EmployeesDeleteModal id='1'></EmployeesDeleteModal>
+ 											<EmployeesDeleteModal id={selection}></EmployeesDeleteModal>
  										</div>
  								 </Col>
              </Row>
