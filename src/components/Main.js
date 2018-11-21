@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { Route, NavLink, HashRouter} from "react-router-dom";
 
 import { Container, Row, Col } from 'reactstrap';
-import axios from 'axios';
 
 import Employees from './employees/Employees';
 import Projects from './projects/Projects';
@@ -11,35 +10,8 @@ import EmployeesOfProject from './employees/EmployeesOfProject';
 import Other from './other/Other';
 import Header from './Header';
 
-const URL = 'https://sec-os-app3.7e14.starter-us-west-2.openshiftapps.com/employees/count'
-
 class Main extends Component
 {
-	constructor(props)
-    {
-        super(props);
-
-        this.state =
-        {
-            count: 0,
-        };
-    }
-
-	componentDidMount()
-	{
-      this.loadData();
-	}
-
-	loadData()
-	{
-		axios.get(URL).then(res =>
-		{
-			const rd = res.data;
-			this.setState( {count: rd} );
-			this.setState( {loading: false} );
-		})
-	}
-
 	render() {
 	    return (
 				<HashRouter>
