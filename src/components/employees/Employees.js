@@ -65,7 +65,6 @@ class Employees extends React.Component
         				{ columnName: 'action', width: 100 }
       			],
             rows: [],
-						selection: [1],
             loading: true,
 						selection: []
         };
