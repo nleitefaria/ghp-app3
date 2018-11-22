@@ -9,9 +9,9 @@ import EmployeesEditModal from './EmployeesEditModal';
 import EmployeesDeleteModal from './EmployeesDeleteModal';
 import ProjectsLink from './../projects/ProjectsLink';
 
-import { EmployeesConsumer } from "../../context/EmployeesContext";
-
 import Loading from '../Loading';
+
+import { EmployeesConsumer } from "../../context/EmployeesContext";
 
 
 	var divStyleOutter = {
@@ -57,7 +57,7 @@ class EmployeesContent extends React.Component
         {
         	selection: []
         };
-        
+
     }
 
 	changeSelection = selection => this.setState({ selection });
@@ -75,7 +75,7 @@ class EmployeesContent extends React.Component
 	    selTemp.push(selection.slice(-1).pop());
 	    selection = selTemp;
 
-      return (    	
+      return (
     		  <div>
     	        <EmployeesConsumer>
     	        {
