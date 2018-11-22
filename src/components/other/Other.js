@@ -3,14 +3,13 @@ import axios from 'axios';
 
 import { TabContent, TabPane, Nav, NavItem, NavLink, Row, Col, Breadcrumb, BreadcrumbItem } from 'reactstrap';
 import classnames from 'classnames';
+
+import './Other.css';
+
 import Users from './Users';
 import Todos from './Todos';
 import Loading from './../Loading';
 import { OtherProvider } from "../../context/OtherContext";
-
-var divLoading = {
-		  'float': 'left', 'width': '300px', 'paddingTop': '0px', 'paddingLeft': '10px'
-		};
 
 const apiURL = 'https://jsonplaceholder.typicode.com/'
 
@@ -32,7 +31,7 @@ class Other extends React.Component
            { name: 'email', title: 'Email' },
            { name: 'phone', title: 'Phone' }
        ],
-	
+
        todos: [],
        columnsOfTodos: [
            { name: 'id', title: 'ID' },
@@ -121,7 +120,7 @@ class Other extends React.Component
         				<OtherProvider value={this.state}>
         					<br></br>
         						<Row>
-        							<Col xs="6"><div style={divLoading}>{loading && <Loading />}</div></Col>
+        							<Col xs="6"><div className="divLoading">{loading && <Loading />}</div></Col>
         						</Row>
         					<Users />
         				</OtherProvider>
@@ -134,7 +133,7 @@ class Other extends React.Component
         				<OtherProvider value={this.state}>
         				<br></br>
         						<Row>
-        							<Col xs="6"><div style={divLoading}>{loading && <Loading />}</div></Col>
+        							<Col xs="6"><div className="divLoading">{loading && <Loading />}</div></Col>
         						</Row>
         				<Todos />
         			</OtherProvider>

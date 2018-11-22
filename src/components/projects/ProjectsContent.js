@@ -4,29 +4,19 @@ import { Card, Container, Row, Col, Breadcrumb, BreadcrumbItem } from 'reactstra
 import { Grid, Table, TableHeaderRow, TableSelection } from '@devexpress/dx-react-grid-bootstrap4';
 import { SelectionState } from '@devexpress/dx-react-grid';
 
+import './Projects.css';
+
 import ProjectsAddModal from './ProjectsAddModal';
 import EmployeesLink from './../employees/EmployeesLink';
-
 import Loading from './../Loading';
 
 import { ProjectsConsumer } from "../../context/ProjectsContext";
 
-var divStyleOutter = {
-  'width': '300px'
-};
-
-var divStyleInnerLink = {
-  'float': 'left', 'width': '20px', 'paddingTop': '5px', 'paddingLeft': '10px'
-};
-
-var divLoading = {
-  'float': 'left', 'width': '300px', 'paddingTop': '0px', 'paddingLeft': '10px'
-};
 
 const ActionCell = ({ id }) => (
 		  <Table.Cell>
-				<div style={divStyleOutter}>
-         <div style={divStyleInnerLink}><EmployeesLink id={id}/></div>
+				<div className="divStyleOutter">
+         <div className="divStyleInnerLink"><EmployeesLink id={id}/></div>
 		    </div>
 		  </Table.Cell>
 );
@@ -80,7 +70,7 @@ class ProjectsContent extends React.Component
                   </Breadcrumb>
                   <Container>
      		             <Row>
-     			             <Col xs="6"><div style={divLoading}>{context.loading && <Loading />}</div></Col>
+     			             <Col xs="6"><div className="divLoading">{context.loading && <Loading />}</div></Col>
      		             </Row>
      	            </Container>
                   <Container>

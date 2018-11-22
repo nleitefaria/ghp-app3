@@ -4,41 +4,24 @@ import { Card, Container, Row, Col, Breadcrumb, BreadcrumbItem} from 'reactstrap
 import { Grid, Table, TableHeaderRow, TableSelection } from '@devexpress/dx-react-grid-bootstrap4';
 import { SelectionState } from '@devexpress/dx-react-grid';
 
+import './Employees.css';
+
 import EmployeesAddModal from './EmployeesAddModal';
 import EmployeesEditModal from './EmployeesEditModal';
 import EmployeesDeleteModal from './EmployeesDeleteModal';
 import ProjectsLink from './../projects/ProjectsLink';
-
 import Loading from '../Loading';
-
 import { EmployeesConsumer } from "../../context/EmployeesContext";
 
-
-	var divStyleOutter = {
-		  'width': '300px'
-		};
-
-		var divStyleInner = {
-		  'float': 'left', 'width': '80px'
-		};
-
-		var divStyleInnerLink = {
-		  'float': 'left', 'width': '80px', 'paddingTop': '5px', 'paddingLeft': '10px'
-		};
-
-		var divLoading = {
-		  'float': 'left', 'width': '300px', 'paddingTop': '0px', 'paddingLeft': '10px'
-		};
-
-		const ActionCell = ({ id }) => (
+const ActionCell = ({ id }) => (
 		  <Table.Cell>
 		    <span>
-		      <div style={divStyleOutter}>
-		       <div style={divStyleInnerLink}><ProjectsLink id={id}/></div>
+		      <div className="divStyleOutter">
+		       <div className="divStyleInnerLink"><ProjectsLink id={id}/></div>
 		      </div>
 		    </span>
 		  </Table.Cell>
-		);
+);
 
 const Cell = (props) => {
   const { column, row } = props;
@@ -57,7 +40,6 @@ class EmployeesContent extends React.Component
         {
         	selection: []
         };
-
     }
 
 	changeSelection = selection => this.setState({ selection });
@@ -87,19 +69,19 @@ class EmployeesContent extends React.Component
     	            </Breadcrumb>
     	            <Container>
     	            	<Row>
-    	            		<Col xs="6"><div style={divLoading}>{context.loading && <Loading />}</div></Col>
+    	            		<Col xs="6"><div className="divLoading">{context.loading && <Loading />}</div></Col>
     	            	</Row>
     	            </Container>
     	            <Container>
     	                <Row>
     	                    <Col xs="1"><EmployeesAddModal></EmployeesAddModal></Col>
     	   								 <Col xs="1">
-    	   								 		<div style={divStyleInner}>
+    	   								 		<div className="divStyleInner">
     	   											<EmployeesEditModal id={selection}></EmployeesEditModal>
     	   										</div>
     	   								 </Col>
     	   								 <Col xs="1">
-    	    								 		<div style={divStyleInner}>
+    	    								 		<div className="divStyleInner">
     	    											<EmployeesDeleteModal id={selection}></EmployeesDeleteModal>
     	    										</div>
     	    								 </Col>
