@@ -10,7 +10,7 @@ class ProjectsLink extends React.Component
          <div>
             <NavLink to={`/projects/employee/${this.props.id}`}>Projects</NavLink>
             <div>
-							<Route path="/projects/employee/:id" component={ProjectsOfEmployee}/>
+					<Route path="/projects/employee/:id" component={ProjectsOfEmployee}/>
             </div>
          </div>
       );

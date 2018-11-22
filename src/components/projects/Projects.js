@@ -21,8 +21,7 @@ class Projects extends React.Component
                { columnName: 'action', width: 100 }
            ],
            rows: [],
-           loading: true,
-           //selection: []
+           loading: true
        };
   }
 

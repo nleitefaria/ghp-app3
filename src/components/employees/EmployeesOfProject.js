@@ -4,35 +4,21 @@ import axios from 'axios';
 import { Card, Container, Row, Col, Breadcrumb, BreadcrumbItem} from 'reactstrap';
 import { Grid, Table, TableHeaderRow} from '@devexpress/dx-react-grid-bootstrap4';
 
+import './Employees.css';
+
 import EmployeesAddModal from './EmployeesAddModal';
 import EmployeesEditModal from './EmployeesEditModal';
 import EmployeesDeleteModal from './EmployeesDeleteModal';
 import ProjectsLink from './../projects/ProjectsLink';
 import Loading from '../Loading';
 
-const URL = 'https://sec-os-app3.7e14.starter-us-west-2.openshiftapps.com/employees'
-
-var divStyleOutter = {
-  'width': '300px'
-};
-
-var divStyleInner = {
-  'float': 'left', 'width': '80px'
-};
-
-var divStyleInnerLink = {
-  'float': 'left', 'width': '80px', 'paddingTop': '5px', 'paddingLeft': '10px'
-};
-
-var divLoading = {
-  'float': 'left', 'width': '300px', 'paddingTop': '0px', 'paddingLeft': '10px'
-};
+const apiURL = 'https://sec-os-app3.7e14.starter-us-west-2.openshiftapps.com/'
 
 const ActionCell = ({ id }) => (
   <Table.Cell>
     <span>
-      <div style={divStyleOutter}>
-       <div style={divStyleInnerLink}><ProjectsLink id={id}/></div>
+      <div className="divStyleOutter">
+       <div className="divStyleInnerLink"><ProjectsLink id={id}/></div>
       </div>
     </span>
   </Table.Cell>
@@ -77,7 +63,7 @@ class Employees extends React.Component
 
     loadEmployeesForProject(id)
     {
-        axios.get(URL + "/project/" + id).then(res =>
+        axios.get(apiURL + "employees/project/" + id).then(res =>
         {
           const rd = res.data;
           this.setState( {rows: rd} );
@@ -97,19 +83,19 @@ class Employees extends React.Component
          </Breadcrumb>
          <Container>
          	<Row>
-         		<Col xs="6"><div style={divLoading}>{loading && <Loading />}</div></Col>
+         		<Col xs="6"><div className="divLoading">{loading && <Loading />}</div></Col>
          	</Row>
          </Container>
          <Container>
             <Row>
               <Col xs="1"><EmployeesAddModal></EmployeesAddModal></Col>
               <Col xs="1">
-                 <div style={divStyleInner}>
+                 <div className="divStyleInner">
                    <EmployeesEditModal id='1'></EmployeesEditModal>
                  </div>
               </Col>
               <Col xs="1">
-                 <div style={divStyleInner}>
+                 <div className="divStyleInner">
                    <EmployeesDeleteModal id='1'></EmployeesDeleteModal>
                  </div>
               </Col>

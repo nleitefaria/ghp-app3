@@ -4,34 +4,18 @@ import axios from 'axios';
 import { Card, Container, Row, Col, Breadcrumb, BreadcrumbItem } from 'reactstrap';
 import { Grid, Table, TableHeaderRow} from '@devexpress/dx-react-grid-bootstrap4';
 
+import './Projects.css';
+
 import ProjectsAddModal from './ProjectsAddModal';
-import ProjectsDeleteModal from './ProjectsDeleteModal';
 import EmployeesLink from './../employees/EmployeesLink';
 import Loading from './../Loading';
 
-const URL = 'https://sec-os-app3.7e14.starter-us-west-2.openshiftapps.com/projects'
-
-var divStyleOutter = {
-  'width': '300px'
-};
-
-var divStyleInner = {
-  'float': 'left', 'width': '80px'
-};
-
-var divStyleInnerLink = {
-  'float': 'left', 'width': '80px', 'paddingTop': '5px', 'paddingLeft': '10px'
-};
-
-var divLoading = {
-  'float': 'left', 'width': '300px', 'paddingTop': '0px', 'paddingLeft': '10px'
-};
+const apiURL = 'https://sec-os-app3.7e14.starter-us-west-2.openshiftapps.com/'
 
 const ActionCell = ({ id }) => (
 		  <Table.Cell>
-				<div style={divStyleOutter}>
-				 <div style={divStyleInner}><ProjectsDeleteModal></ProjectsDeleteModal></div>
-         <div style={divStyleInnerLink}><EmployeesLink id={id}/></div>
+				<div className="divStyleOutter">
+         <div className="divStyleInnerLink"><EmployeesLink id={id}/></div>
 		    </div>
 		  </Table.Cell>
 );
@@ -76,7 +60,7 @@ class ProjectsOfEmplyees extends React.Component
 
     loadProjectsForEmployee(id)
     {
-        axios.get(URL + "/employee/" + id).then(res =>
+        axios.get(apiURL + "projects/employee/" + id).then(res =>
         {
           const rd = res.data;
           this.setState( {rows: rd} );
@@ -96,7 +80,7 @@ class ProjectsOfEmplyees extends React.Component
         </Breadcrumb>
         <Container>
          <Row>
-           <Col xs="6"><div style={divLoading}>{loading && <Loading />}</div></Col>
+           <Col xs="6"><div className="divLoading">{loading && <Loading />}</div></Col>
          </Row>
         </Container>
          <Container>
