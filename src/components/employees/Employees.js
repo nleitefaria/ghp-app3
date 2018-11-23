@@ -21,7 +21,7 @@ class Employees extends React.Component
                 { name: 'action', title: 'Action'}
             ],
 						tableColumnExtensions: [
-        				{ columnName: 'action', width: 100 }
+        				{ columnName: 'action', width: 50 }
       			],
             rows: [],
             loading: true,

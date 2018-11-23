@@ -1,17 +1,10 @@
 .divStyleOutter = {
-		width: 300px
+		width: 100px
 	};
 
 .divStyleInner = {
 		float: left;
 		width: 80px
-};
-
-.divStyleInnerLink = {
-		float: left;
-		width: 80px;
-		paddingTop: 5px;
-		paddingLeft: 10px
 };
 
 .divLoading = {

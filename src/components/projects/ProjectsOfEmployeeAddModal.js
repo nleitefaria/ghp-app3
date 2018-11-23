@@ -7,6 +7,9 @@ import { FormGroup, Label, Input, Button, Modal, ModalHeader, ModalBody, ModalFo
 class ProjectsOfEmployeeAddModal extends React.Component {
   constructor(props) {
     super(props);
+    
+    
+    
     this.state = {
       modal: false,
       name: ''
@@ -73,16 +76,16 @@ class ProjectsOfEmployeeAddModal extends React.Component {
   render() {
     return (
       <div>
-        <Button color="primary" onClick={this.toggle}>Add</Button>
+        <Button color="primary" onClick={this.toggle}>Projects</Button>
         <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
           <ModalHeader toggle={this.toggle}>Add Project</ModalHeader>
           <ModalBody>
           	<form onSubmit={this.handleSubmit}>
           		<FormGroup>
-          			<Label>Name</Label>
+          			<Label>Name of project</Label>
           			<Input type="text" value={this.state.inputvalue} onChange={this.handleChange} />
           		</FormGroup>
-              <button type="submit">Add</button>
+              <button type="submit">Add Project</button>
           	</form>
           </ModalBody>
           <ModalFooter>
