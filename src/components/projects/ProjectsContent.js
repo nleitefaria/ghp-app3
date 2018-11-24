@@ -7,6 +7,7 @@ import { SelectionState } from '@devexpress/dx-react-grid';
 import './Projects.css';
 
 import ProjectsAddModal from './ProjectsAddModal';
+import ProjectsDeleteModal from './ProjectsDeleteModal';
 import EmployeesLink from './../employees/EmployeesLink';
 import Loading from './../Loading';
 
@@ -76,7 +77,10 @@ class ProjectsContent extends React.Component
                   <Container>
                   <Row>
                     <Col xs="1"><ProjectsAddModal></ProjectsAddModal></Col>
+										<Col xs="1"><ProjectsDeleteModal id={selection}></ProjectsDeleteModal></Col>
                   </Row>
+									<Container>
+                </Container>
                 </Container>
                 <br></br>
                 <Card>
