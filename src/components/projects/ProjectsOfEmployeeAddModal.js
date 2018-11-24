@@ -33,22 +33,6 @@ class ProjectsOfEmployeeAddModal extends React.Component {
       })
   }
 
-  /*
-  handleSubmit (event) {
-      //alert(this.state.name);
-      this.toggle();
-      alert(event.target.value);
-      event.preventDefault();
-  }
-
-  addEmployee(event)
-  {
-    //this.toggle();
-    alert(event.target.value);
-    alert('ICI');
-    event.preventDefault();
-
-  }*/
 
   handleChange = event => {
     this.setState({ name: event.target.value });
