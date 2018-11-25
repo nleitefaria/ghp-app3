@@ -17,7 +17,7 @@ const ActionCell = ({ id }) => (
 		  <Table.Cell>
 		    <span>
 		      <div className="divStyleOutter">
-		       <div className="divStyleInnerLink"><ProjectsLink id={id}/></div>
+		       <div><ProjectsLink id={id}/></div>
 		      </div>
 		    </span>
 		  </Table.Cell>

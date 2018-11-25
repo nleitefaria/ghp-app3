@@ -1,15 +1,13 @@
 import React from 'react';
-import axios from 'axios';
 
-import { FormGroup, Label, Input, Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
+import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
+import ProjectsOfEmployeeAddModalTable from './ProjectsOfEmployeeAddModalTable';
 
-
-class ProjectsOfEmployeeAddModal extends React.Component {
-  constructor(props) {
+class ProjectsOfEmployeeAddModal extends React.Component
+{
+  constructor(props)
+  {
     super(props);
-    
-    
-    
     this.state = {
       modal: false,
       name: ''
@@ -17,8 +15,6 @@ class ProjectsOfEmployeeAddModal extends React.Component {
     };
 
     this.toggle = this.toggle.bind(this);
-    this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   toggle() {
@@ -33,44 +29,14 @@ class ProjectsOfEmployeeAddModal extends React.Component {
       })
   }
 
-
-  handleChange = event => {
-    this.setState({ name: event.target.value });
-  }
-
-  handleSubmit = event =>
-  {
-    event.preventDefault();
-
-    const project = {
-      name: this.state.name
-    };
-
-    axios.post(`https://sec-os-app3.7e14.starter-us-west-2.openshiftapps.com/project`, { project })
-      .then(res => {
-        console.log(res);
-        console.log(res.data);
-        alert(res);
-        alert(res.data);
-
-      })
-  }
-
-
   render() {
     return (
       <div>
-        <Button color="primary" onClick={this.toggle}>Projects</Button>
+        <Button color="link" onClick={this.toggle}>Projects</Button>
         <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
-          <ModalHeader toggle={this.toggle}>Add Project</ModalHeader>
+          <ModalHeader toggle={this.toggle}>Employee projects</ModalHeader>
           <ModalBody>
-          	<form onSubmit={this.handleSubmit}>
-          		<FormGroup>
-          			<Label>Name of project</Label>
-          			<Input type="text" value={this.state.inputvalue} onChange={this.handleChange} />
-          		</FormGroup>
-              <button type="submit">Add Project</button>
-          	</form>
+            <ProjectsOfEmployeeAddModalTable></ProjectsOfEmployeeAddModalTable>
           </ModalBody>
           <ModalFooter>
             <Button type="submit" color="primary" onClick={this.addEmployee}>Add</Button>

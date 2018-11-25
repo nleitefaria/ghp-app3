@@ -90,7 +90,6 @@ class ProjectsAddModal extends React.Component {
             <Button color="secondary" onClick={this.toggle}>Cancel</Button>
           </ModalFooter>
         </Modal>
-
       </div>
     );
   }
