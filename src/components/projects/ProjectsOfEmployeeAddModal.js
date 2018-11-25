@@ -29,21 +29,20 @@ class ProjectsOfEmployeeAddModal extends React.Component
       })
   }
 
-  render() {
+  render()
+  {
     return (
       <div>
         <Button color="link" onClick={this.toggle}>Projects</Button>
         <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
           <ModalHeader toggle={this.toggle}>Employee projects</ModalHeader>
           <ModalBody>
-            <ProjectsOfEmployeeAddModalTable></ProjectsOfEmployeeAddModalTable>
+            <ProjectsOfEmployeeAddModalTable id={this.props.id}></ProjectsOfEmployeeAddModalTable>
           </ModalBody>
           <ModalFooter>
-            <Button type="submit" color="primary" onClick={this.addEmployee}>Add</Button>
-            <Button color="secondary" onClick={this.toggle}>Cancel</Button>
+            <Button color="secondary" onClick={this.toggle}>Close</Button>
           </ModalFooter>
         </Modal>
-
       </div>
     );
   }

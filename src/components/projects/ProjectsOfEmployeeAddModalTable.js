@@ -1,6 +1,10 @@
 import React from 'react';
+import axios from 'axios';
+
 import { Card } from 'reactstrap';
 import { Grid, Table, TableHeaderRow} from '@devexpress/dx-react-grid-bootstrap4';
+
+const apiURL = 'https://sec-os-app3.7e14.starter-us-west-2.openshiftapps.com/'
 
 class ProjectsOfEmployeeAddModalTable extends React.Component
 {
@@ -9,31 +13,28 @@ class ProjectsOfEmployeeAddModalTable extends React.Component
     super(props);
     this.state = {
       columns: [
-        { name: 'project', title: 'Project' },
-        { name: 'alocation', title: 'Alocation' }
+        { name: 'name', title: 'Project' },
+        { name: 'allocation', title: 'Allocation' }
       ],
-      rows: [{project : 'p1_mockado', alocation:100}]
+      rows: []
     };
   }
 
-  /*
   componentDidMount()
   {
-      this.loadData();
+      this.loadData(this.props.id);
   }
 
-  loadData()
+  loadData(id)
   {
-
-      axios.get(apiURL + 'projects').then(res =>
+      alert(id);
+      axios.get(apiURL + 'projects/employee/' + id).then(res =>
       {
         const rd = res.data;
         this.setState( {rows: rd} );
         this.setState( {loading: false} );
       })
-
   }
-  */
 
   render()
   {
