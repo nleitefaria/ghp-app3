@@ -17,8 +17,8 @@ const apiURL = 'https://sec-os-app3.7e14.starter-us-west-2.openshiftapps.com/'
 const ActionCell = ({ id }) => (
   <Table.Cell>
     <span>
-      <div className="divStyleOutter">
-       <div className="divStyleInnerLink"><ProjectsLink id={id}/></div>
+      <div>
+       <div><ProjectsLink id={id}/></div>
       </div>
     </span>
   </Table.Cell>

@@ -27,7 +27,6 @@ class ProjectsOfEmployeeAddModalTable extends React.Component
 
   loadData(id)
   {
-      alert(id);
       axios.get(apiURL + 'projects/employee/' + id).then(res =>
       {
         const rd = res.data;

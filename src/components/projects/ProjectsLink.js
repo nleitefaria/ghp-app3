@@ -9,9 +9,7 @@ class ProjectsLink extends React.Component
   {
       return (
          <div>            
-            <Row>            
-               <Col xs="1"><ProjectsOfEmployeeAddModal id={this.props.id}></ProjectsOfEmployeeAddModal></Col>
-            </Row>
+            <ProjectsOfEmployeeAddModal id={this.props.id}></ProjectsOfEmployeeAddModal>
          </div>
       );
    }
