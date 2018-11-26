@@ -73,13 +73,18 @@ class ProjectsContent extends React.Component
      		             <Row>
      			             <Col xs="6"><div className="divLoading">{context.loading && <Loading />}</div></Col>
      		             </Row>
-     	            </Container>
+     	          </Container>
                   <Container>
-                  <Row>
-                    <Col xs="1"><ProjectsAddModal></ProjectsAddModal></Col>
-										<Col xs="1"><ProjectsDeleteModal id={selection}></ProjectsDeleteModal></Col>
-                  </Row>
-									<Container>
+                  <div className="divLoading">
+                  {
+	            	context.loading ||  
+                  	<Row>
+                  		<Col xs="1"><ProjectsAddModal></ProjectsAddModal></Col>
+							<Col xs="1"><ProjectsDeleteModal id={selection}></ProjectsDeleteModal></Col>
+					</Row>
+	            	}
+	                </div>
+				  <Container>
                 </Container>
                 </Container>
                 <br></br>

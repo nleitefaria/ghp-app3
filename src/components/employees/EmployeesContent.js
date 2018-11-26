@@ -73,19 +73,24 @@ class EmployeesContent extends React.Component
     	            	</Row>
     	            </Container>
     	            <Container>
-    	                <Row>
-    	                    <Col xs="1"><EmployeesAddModal></EmployeesAddModal></Col>
-    	   								 <Col xs="1">
-    	   								 		<div className="divStyleInner">
-    	   											<EmployeesEditModal id={selection}></EmployeesEditModal>
-    	   										</div>
-    	   								 </Col>
-    	   								 <Col xs="1">
-    	    								 		<div className="divStyleInner">
-    	    											<EmployeesDeleteModal id={selection}></EmployeesDeleteModal>
-    	    										</div>
-    	    								 </Col>
-    	                </Row>
+    	            	<div className="divLoading">
+    	            	{
+    	            		context.loading ||    	            		   	            			 	            			
+    	                	<Row>
+    	                    	<Col xs="1"><EmployeesAddModal></EmployeesAddModal></Col>
+    	   							<Col xs="1">
+    	   								<div className="divStyleInner">
+    	   									<EmployeesEditModal id={selection}></EmployeesEditModal>
+    	   								</div>
+    	   							</Col>
+    	   							<Col xs="1">
+    	   								<div className="divStyleInner">
+    	    								<EmployeesDeleteModal id={selection}></EmployeesDeleteModal>
+    	    							</div>
+    	    					</Col>
+    	    				</Row>   	            		
+    	            	}
+    	                </div>
     	            </Container>
     	            <br></br>
     	            <Card>
