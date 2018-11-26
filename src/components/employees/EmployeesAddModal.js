@@ -1,6 +1,6 @@
 import React from 'react';
 import axios from 'axios';
-import { FormGroup, Label, Input, Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
+import { Form, FormGroup, Col, Label, Input, Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 
 const apiURL = 'https://sec-os-app3.7e14.starter-us-west-2.openshiftapps.com/'
 
@@ -11,13 +11,17 @@ class EmployeesAddModal extends React.Component
     this.state = {
       modal: false,
       platoons: [],
-      name: ''
+      employee: {
+          name: '',
+          date: '',
+          role: '',
+          platoon: ''        
+        }
 
     };
 
     this.toggle = this.toggle.bind(this);
     this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   toggle() {
@@ -26,28 +30,6 @@ class EmployeesAddModal extends React.Component
     });
   }
 
-  handleChange (event) {
-      this.setState({
-          name: event.target.value
-      })
-  }
-
-  handleSubmit (event) {
-      //alert(this.state.name);
-      this.toggle();
-      alert(event.target.value);
-      event.preventDefault();
-  }
-
-  addEmployee(event)
-  {
-    //this.toggle();
-    //alert(event.target.value);
-    //event.preventDefault();
-    alert('ICI');
-
-
-  }
 
   loadPlatoons()
   {
@@ -64,13 +46,30 @@ class EmployeesAddModal extends React.Component
   {
     this.loadPlatoons();
   }
+  
+  handleChange = async (event) => {
+	    const { target } = event;
+	    const value = target.value;
+	    const { name } = target;
+	    await this.setState({
+	      [ name ]: value,
+	    });
+	  }
+  
+  submitForm(e) 
+  {
+	  e.preventDefault();
+	  console.log(`Name: ${ this.state.name }`)
+  }   
 
   render()
   {
+	/*
     let platoons = this.state.platoons;
     let optionItems = platoons.map((platoon) =>
       <option key={platoon.id}>{platoon.name}</option>
     );
+    */
 
     return (
       <div>
@@ -78,51 +77,24 @@ class EmployeesAddModal extends React.Component
         <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
           <ModalHeader toggle={this.toggle}><b>Add Employee</b></ModalHeader>
           <ModalBody>
-              <form onSubmit={this.handleSubmit}>
-                <FormGroup>
-                  <Label><b>Name:</b></Label>
-                  <Input type="text" value={this.state.inputvalue} onChange={this.handleChange} />
-                </FormGroup>
-                <FormGroup>
-                  <Label><b>Date:</b></Label>
-                  <Input type="date" name="date" id="exampleDate" placeholder="date placeholder" />
-                </FormGroup>
-                <FormGroup>
-                  <Label><b>Role:</b></Label>
-                    <FormGroup check>
-                      <Label check>
-                        <Input type="radio" name="radio1" />{' '}(none selected)
-                      </Label>
-                    </FormGroup>
-                    <FormGroup check>
-                      <Label check>
-                        <Input type="radio" name="radio1" />{' '}JE
-                      </Label>
-                    </FormGroup>
-                    <FormGroup check>
-                      <Label check>
-                        <Input type="radio" name="radio1" />{' '}PE
-                      </Label>
-                    </FormGroup>
-                    <FormGroup check>
-                      <Label check>
-                        <Input type="radio" name="radio1" />{' '}SE
-                      </Label>
-                    </FormGroup>
-                    <FormGroup check>
-                      <Label check>
-                        <Input type="radio" name="radio1" />{' '}TM
-                      </Label>
-                    </FormGroup>
-                </FormGroup>
-                <FormGroup>
-                  <Label><b>Platoon:</b></Label>
-                    <Input type="select" name="select" id="exampleSelect">
-                      <option>Please select one</option>
-                      {optionItems}
-                    </Input>
-                </FormGroup>
-              </form>
+          
+          
+          
+          
+          <Form onSubmit={(e) => this.submitForm(e)}>
+            <Col>
+              <FormGroup>
+                <Label>Name</Label>
+                <Input type="text" name="name" id="name" onChange={ (e) => {
+                   
+                    this.handleChange(e)
+                  } }/>
+              </FormGroup>
+            </Col>
+            
+            <Button>Submit</Button>
+          </Form>
+        
           </ModalBody>
           <ModalFooter>
             <Button type="submit" color="primary" onClick={this.addEmployee}>Add</Button>
