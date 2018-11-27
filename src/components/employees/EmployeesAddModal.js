@@ -11,17 +11,15 @@ class EmployeesAddModal extends React.Component
     this.state = {
       modal: false,
       platoons: [],
-      employee: {
-          name: '',
-          date: '',
-          role: '',
-          platoon: ''        
-        }
-
+      name : '',
+      date : '',
+      role:''
     };
 
     this.toggle = this.toggle.bind(this);
-    this.handleChange = this.handleChange.bind(this);
+    this.handleNameChange = this.handleNameChange.bind(this);
+    this.handleDateChange = this.handleDateChange.bind(this);
+    this.handleRoleChange = this.handleRoleChange.bind(this);
   }
 
   toggle() {
@@ -47,19 +45,38 @@ class EmployeesAddModal extends React.Component
     this.loadPlatoons();
   }
   
-  handleChange = async (event) => {
+  handleNameChange = async (event) => {
+	    const { target } = event;
+	    const value = target.value;	    
+	    await this.setState({
+	      name : value,
+	    });
+	  }
+  
+  handleDateChange = async (event) => {
 	    const { target } = event;
 	    const value = target.value;
-	    const { name } = target;
 	    await this.setState({
-	      [ name ]: value,
+	      date : value,
+	    });
+	  }
+  
+  handleRoleChange = async (event) => {
+	    const { target } = event;
+	    const value = target.value;
+	    await this.setState({
+	      role : value,
 	    });
 	  }
   
   submitForm(e) 
   {
+	  alert('@Submit form');
 	  e.preventDefault();
 	  console.log(`Name: ${ this.state.name }`)
+	  console.log(`Date: ${ this.state.date }`)
+	  console.log(`Role: ${ this.state.role }`)
+	  this.toggle();
   }   
 
   render()
@@ -73,35 +90,85 @@ class EmployeesAddModal extends React.Component
 
     return (
       <div>
-        <Button color="primary" onClick={this.toggle}>Add</Button>
+        <Button color="primary" onClick={this.toggle}>Add</Button>   
         <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
-          <ModalHeader toggle={this.toggle}><b>Add Employee</b></ModalHeader>
+        <Form onSubmit={(e) => this.submitForm(e)}>
+        	<ModalHeader toggle={this.toggle}><b>Add Employee</b></ModalHeader>
           <ModalBody>
-          
-          
-          
-          
-          <Form onSubmit={(e) => this.submitForm(e)}>
             <Col>
               <FormGroup>
                 <Label>Name</Label>
-                <Input type="text" name="name" id="name" onChange={ (e) => {
-                   
-                    this.handleChange(e)
+                <Input type="text" name="name" id="name" onChange={ (e) => {                   
+                    this.handleNameChange(e)
                   } }/>
-              </FormGroup>
+              </FormGroup>            
+              <FormGroup>
+                <Label for="date">Date</Label>
+                <Input type="date" name="date" id="date" onChange={ (e) => {                   
+                    this.handleDateChange(e)
+                } } />
+              </FormGroup>               
+              <FormGroup> 
+                <Label for="role">Role</Label>
+                <FormGroup check>
+                  <Label check>
+                    <Input type="radio" name="role" value="" 
+                    	onChange={ (e) => {                   
+                            this.handleRoleChange(e)
+                        } }
+                    	/>
+                    None selected
+                  </Label>
+                </FormGroup>
+                <FormGroup check>
+                  <Label check>
+                    <Input type="radio" name="role" value="b"
+                    	onChange={ (e) => {                   
+                            this.handleRoleChange(e)
+                        } }
+                    	/>
+                    JE
+                  </Label>
+                </FormGroup>
+                <FormGroup check>
+                  <Label check>
+                    <Input type="radio" name="role" value="c"
+                    	onChange={ (e) => {                   
+                            this.handleRoleChange(e)
+                        } }
+                    	/>
+                    PE
+                  </Label>
+                </FormGroup> 
+                <FormGroup check>
+                <Label check>
+                  <Input type="radio" name="role" value="d"
+                  	onChange={ (e) => {                   
+                          this.handleRoleChange(e)
+                      } }
+                  	/>
+                  SE
+                </Label>
+              </FormGroup>  
+              <FormGroup check>
+              <Label check>
+                <Input type="radio" name="role" value="e"
+                	onChange={ (e) => {                   
+                        this.handleRoleChange(e)
+                    } }
+                	/>
+                TM
+              </Label>
+            </FormGroup>  
+                </FormGroup>
             </Col>
-            
-            <Button>Submit</Button>
-          </Form>
-        
           </ModalBody>
           <ModalFooter>
-            <Button type="submit" color="primary" onClick={this.addEmployee}>Add</Button>
+          <Button color="primary">Submit</Button>          
             <Button color="secondary" onClick={this.toggle}>Cancel</Button>
           </ModalFooter>
-        </Modal>
-
+          </Form>
+        </Modal>       
       </div>
     );
   }
