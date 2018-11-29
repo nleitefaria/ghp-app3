@@ -15,7 +15,7 @@ class EmployeeOfProjectsAddModal extends React.Component
       modal: false,
       name: '',
       columns: [
-          { name: 'name', title: 'Project' },
+          { name: 'name', title: 'Employee' },
           { name: 'allocation', title: 'Allocation' }
       ],
       rows: []
